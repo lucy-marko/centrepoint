@@ -7,10 +7,22 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Oswald:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <link rel="stylesheet" href="./styles/main.css">
+    <script src="https://sdk.yoti.com/clients/browser.js"></script>
     <title></title>
   </head>
   <body>
-    Hello
+    <span
+      data-yoti-application-id="786f5bed-5638-4f40-bc0a-ee65b9f817f9"
+      data-yoti-type="inline"
+      data-yoti-scenario-id="ae8a4de4-0e85-4bfc-baad-1df239e90371"
+      data-size="medium"
+      data-target="embed">
+      Log in with Yoti
+    </span>
+    <script>
+        _ybg.config.service = 'https://www.yoti.com/connect/'
+        _ybg.init()
+    </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   </body>

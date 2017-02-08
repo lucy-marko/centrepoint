@@ -7,7 +7,7 @@ const routes = require('./routes/index.js');
 const server = new Hapi.Server();
 
 server.connection ({
-  port: process.env.PORT || 4000
+  port: process.env.PORT || 9443
 });
 
 server.register([inert, vision], (err) => {
