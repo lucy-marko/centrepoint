@@ -72,7 +72,7 @@ Fonts and colours were taken to match those at https://centrepoint.org.uk
 
 - Body text: Lato (regular)
 - Headings: Oswald (regular)
-- Fallbacks: Sans-Serif, Helvetica
+- Fallbacks: Sans-Serif
 
 #### Colour palette
 - color1: rgb(54,54,54);
