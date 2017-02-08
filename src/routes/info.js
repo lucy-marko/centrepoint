@@ -1,3 +1,11 @@
+const fs = require('fs');
+const path = require('path');
+const YotiClient = require('yoti-node-sdk');
+
+const CLIENT_SDK_ID = '8a4dcb2a-9ed6-4d44-9a55-12b581bb5e64';
+const PEM = fs.readFileSync(path.join(__dirname, '../../keys/help-access-security.pem'));
+const yotiClient = new YotiClient(CLIENT_SDK_ID, PEM);
+
 module.exports = [{
   method: 'GET',
   path:'/info',
@@ -11,9 +19,9 @@ module.exports = [{
     }
     let promise = yotiClient.getActivityDetails(token);
     promise.then((activityDetails) => {
-      let userData = activityDetails.getUserId();
-      reply.view('index', {
-        userData: userData
+      console.log(activityDetails);
+      reply.view('info', {
+        profile: activityDetails.getUserProfile()
       });
     }).catch((err) => {
       console.error(err);
