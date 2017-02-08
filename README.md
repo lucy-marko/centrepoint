@@ -59,6 +59,11 @@ An app to allow former Centrepoint residents access their Centrepoint address hi
 - Styling and animations
 - Prepare for demo & presentation
 
+## Wireframes
+
+<img src="./wireframes/wireframes-12.JPG" width="400"/>
+<img src="./wireframes/wireframes-34.JPG" width="300"/>
+
 ## Design decisions
 
 Fonts and colours were taken to match those at https://centrepoint.org.uk
