@@ -1,0 +1,29 @@
+{
+  "name": "centrepoint",
+  "version": "1.0.0",
+  "description": "An app to allow former Centrepoint residents access their Centrepoint address history and information that they may require for their new tenancy agreements.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FAC9/centrepoint.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FAC9/centrepoint/issues"
+  },
+  "homepage": "https://github.com/FAC9/centrepoint#readme",
+  "dependencies": {
+    "handlebars": "^4.0.6",
+    "hapi": "^15.2.0",
+    "inert": "^4.0.2",
+    "request": "^2.79.0",
+    "vision": "^4.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
