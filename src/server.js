@@ -29,7 +29,8 @@ server.register([inert, vision], (err) => {
     },
     path: 'views',
     layoutPath: 'views/layout',
-    layout: 'default'
+    layout: 'default',
+    partialsPath: 'views/partials'
   });
 
   server.route(routes);
