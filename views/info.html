@@ -1,45 +1,43 @@
 {{!< layout/default}}
-
+{{> header}}
 
 <div class="container">
+  <div class="row">
+    <h4 class="info-header info-check top center-align" id="welcome2">Hi {{profile.givenNames}}. How can we help?</h4>
 
-  <div>
-    <img class="logo" src="https://centrepoint.org.uk/media/1001/logo-centrepoint.png" alt="centrepoint logo" />
-    <form action="#">
-  </div>
+    <div class="col offset-s1">
+      <p class="info-check">
+        <input type="checkbox" class="filled-in" id="history" />
+        <label for="history">Accommodation history</label>
+      </p>
 
-  <div>
-    <h4 class="info-check top">Hi {{profile.givenNames}}. How can we help?</h4>
+      <p class="info-check">
+        <input type="checkbox" class="filled-in" id="arrears" />
+        <label for="arrears">Rent arreares report</label>
+      </p>
 
-    <p class="info-check">
-      <input type="checkbox" class="filled-in" id="history" />
-      <label for="history">Accommodation history</label>
-    </p>
+      <p class="info-check">
+        <input type="checkbox" class="filled-in" id="reference" />
+        <label for="reference">Rental reference</label>
+      </p>
 
-    <p class="info-check">
-      <input type="checkbox" class="filled-in" id="arrears" />
-      <label for="arrears">Rent arreares report</label>
-    </p>
-
-    <p class="info-check">
-      <input type="checkbox" class="filled-in" id="reference" />
-      <label for="reference">Rental reference</label>
-    </p>
-
-    <div class="other">
-      Other?
-      <div class="input-field inline">
-        <input id="other" type="text" class="validate">
-        <label for="other"></label>
+      <div class="other">
+        Other?
+        <div class="input-field inline">
+          <input id="other" type="text" class="validate">
+          <label for="other"></label>
+        </div>
       </div>
     </div>
   </div>
 
-  <div>
-    <h4>Sending your information</h4>
-     <ul class="collapsible col s10" data-collapsible="accordion">
+
+  <div class="container">
+    <div class="row">
+    <h4 class="info-header center-align">Sending your information</h4>
+     <ul class="collapsible" data-collapsible="accordion">
        <li>
-         <div class="collapsible-header"><i class="small material-icons">stars</i>Email my information</div>
+         <div class="collapsible-header"><i class="fa fa-at" aria-hidden="true"></i>Email me</div>
          <div class="collapsible-body">
            <span class="timeframe">We process email requests in 24 hours</span>
            <input placeholder="Your email here" id="email" type="email" class="validate">
@@ -47,7 +45,7 @@
          </div>
        </li>
        <li>
-         <div class="collapsible-header"><i class="small material-icons">email</i>Post my information</div>
+         <div class="collapsible-header"><i class="small material-icons">email</i>Post it to me</div>
          <div class="collapsible-body">
            <span class="timeframe">Postal requests take up to 5 days</span>
            <input placeholder="Street or PO Box" id="street" type="text" class="col s12">
@@ -56,6 +54,7 @@
          </div>
        </li>
      </ul>
+    </div>
     </div>
 
     <div class="center-align submit-btn">
