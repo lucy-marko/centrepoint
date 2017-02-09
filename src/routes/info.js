@@ -19,10 +19,14 @@ module.exports = [{
     }
     let promise = yotiClient.getActivityDetails(token);
     promise.then((activityDetails) => {
-      console.log(activityDetails);
-      reply.view('info', {
-        profile: activityDetails.getUserProfile()
-      });
+      let context = activityDetails.profile;
+      let getFirstName = (context) => {
+        let rawName = context.givenNames.split(' ')[0];
+        let name = rawName.slice(0,1).concat(rawName.slice(1).toLowerCase());
+        context.firstName = name;
+      }
+      getFirstName(context);
+      reply.view('info', context);
     }).catch((err) => {
       console.error(err);
       reply.view('error', {
