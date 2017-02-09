@@ -10,14 +10,8 @@ const path = require('path');
 
 const server = new hapi.Server();
 
-const tls = {
-  key: fs.readFileSync(path.join(__dirname, '../keys/key.pem')),
-  cert: fs.readFileSync(path.join(__dirname, '../keys/cert.pem'))
-};
-
 server.connection ({
-  port: process.env.PORT || 9443,
-  tls: tls
+  port: process.env.PORT || 9443
 });
 
 server.register([inert, vision], (err) => {
