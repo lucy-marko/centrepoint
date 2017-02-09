@@ -1,20 +1,32 @@
 {{!< layout/default}}
 
-<h1>Welcome!</h1>
-<p>If you've previously stayed in a Centrepoint hostel and you need to your address history,
-  rent arrears information or a rental reference for a current or upcoming rental application you
-  can log in here to request the information you need. We will get back to you within 24 hours.</p>
-  <!-- We may want to add a property to the context object that calculates the number of hours it
-  will take to hear back from Centrepoint based on whether it's a weekday or the weekend -->
-<span
-  data-yoti-application-id="786f5bed-5638-4f40-bc0a-ee65b9f817f9"
-  data-yoti-type="inline"
-  data-yoti-scenario-id="ae8a4de4-0e85-4bfc-baad-1df239e90371"
-  data-size="medium"
-  data-target="embed">
-  Log in with Yoti
-</span>
-<script>
-    _ybg.config.service = 'https://www.yoti.com/connect/'
-    _ybg.init()
-</script>
+<div class="container">
+  <div class="row">
+    <div class="col s10 m6 l4">
+      <img class="logo" src="https://centrepoint.org.uk/media/1001/logo-centrepoint.png" alt="centrepoint logo" />
+      <h3>Welcome!</h3>
+      <p>Former Centrepoint residents can use this service to request</p>
+      <ul class="browser-default">
+        <li>Address history at Centrepoint</li>
+        <li>Rent arrears report</li>
+        <li>Rental references</li>
+      </ul>
+      <p>Log in securely with Yoti and get a reply quickly with the information you need. </p>
+        <!-- We may want to add a property to the context object that calculates the number of hours it
+        will take to hear back from Centrepoint based on whether it's a weekday or the weekend -->
+        <span
+          data-yoti-application-id="786f5bed-5638-4f40-bc0a-ee65b9f817f9"
+          data-yoti-type="inline"
+          data-yoti-scenario-id="ae8a4de4-0e85-4bfc-baad-1df239e90371"
+          data-size="medium"
+          data-target="embed">
+          Log in with Yoti
+        </span>
+      <script>
+          _ybg.config.service = 'https://www.yoti.com/connect/'
+          _ybg.init()
+      </script>
+    </div>
+  </div>
+</div>
+</div>
