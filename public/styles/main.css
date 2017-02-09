@@ -2,8 +2,34 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+h4 {
+  font-size: 22px;
+}
+
 .container {
-  margin-left: 30px;
+  /*width: 320px;*/
+}
+
+.info-check, .other {
+  margin-left: 10px;
+}
+
+.other {
+  margin-top: -20px;
+}
+
+.top {
+  margin-top: 10px;
+}
+
+.timeframe {
+  font-size: 10px;
+  margin-top: -10px;
+  padding-top: -10px;
+}
+
+.submit-btn {
+  margin-top: 40px;
 }
 
 .header {

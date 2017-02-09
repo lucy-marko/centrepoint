@@ -1,17 +1,68 @@
 {{!< layout/default}}
 
-<h1>Success!</h1>
-<table>
-  <tr>
-    <td>Name</td>
-    <td>{{profile.givenNames}}</td>
-  </tr>
-  <tr>
-    <td>Surname</td>
-    <td>{{profile.familyName}}</td>
-  </tr>
-  <tr>
-    <td>Date of birth</td>
-    <td>{{profile.dateOfBirth}}</td>
-  </tr>
-</table>
+
+<div class="container">
+
+  <div>
+    <img class="logo" src="https://centrepoint.org.uk/media/1001/logo-centrepoint.png" alt="centrepoint logo" />
+    <form action="#">
+  </div>
+
+  <div>
+    <h4 class="info-check top">Hi {{profile.givenNames}}. How can we help?</h4>
+
+    <p class="info-check">
+      <input type="checkbox" class="filled-in" id="history" />
+      <label for="history">Accommodation history</label>
+    </p>
+
+    <p class="info-check">
+      <input type="checkbox" class="filled-in" id="arrears" />
+      <label for="arrears">Rent arreares report</label>
+    </p>
+
+    <p class="info-check">
+      <input type="checkbox" class="filled-in" id="reference" />
+      <label for="reference">Rental reference</label>
+    </p>
+
+    <div class="other">
+      Other?
+      <div class="input-field inline">
+        <input id="other" type="text" class="validate">
+        <label for="other"></label>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h4>Sending your information</h4>
+     <ul class="collapsible col s10" data-collapsible="accordion">
+       <li>
+         <div class="collapsible-header"><i class="small material-icons">stars</i>Email my information</div>
+         <div class="collapsible-body">
+           <span class="timeframe">We process email requests in 24 hours</span>
+           <input placeholder="Your email here" id="email" type="email" class="validate">
+           <label for="email" data-error="make sure you've entered a valid email" data-success="right"></label>
+         </div>
+       </li>
+       <li>
+         <div class="collapsible-header"><i class="small material-icons">email</i>Post my information</div>
+         <div class="collapsible-body">
+           <span class="timeframe">Postal requests take up to 5 days</span>
+           <input placeholder="Street or PO Box" id="street" type="text" class="col s12">
+           <input placeholder="Town" id="town" type="text" class="col s6">
+           <input placeholder="Postcode" id="postcode" type="text" class="col s6">
+         </div>
+       </li>
+     </ul>
+    </div>
+
+    <div class="center-align submit-btn">
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
+
+   </form>
+</div>
