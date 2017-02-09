@@ -1,17 +1,58 @@
-body {
+html {
   font-family: 'Lato', sans-serif;
+  font-size: 0.95em;
+}
+
+body {
+  background-color: rgb(246,246,246);
 }
 
 .container {
   margin-left: 30px;
 }
 
-.header {
+#welcome {
+  margin-top: 25px;
+}
+
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Oswald', sans-serif;
 }
 
-.logo {
-  margin-top: 30px;
-  width: auto;
-  height: 50px;
+.brand-logo img {
+  padding: 5px;
+  height: 58px;
 }
+
+.nav-wrapper {
+  background-color: rgb(255,209,65);
+}
+
+#yoti-button {
+  background-color: rgb(54,54,54);
+}
+
+#yoti-button a {
+  color: rgb(233,230,220);
+  font-family: 'Oswald', sans-serif;
+}
+
+.padding-right {
+  padding-right: 5px;
+}
+
+.margin-left {
+  margin-left: 15px;
+}
+
+#yoti-links {
+  color: rgb(46,163,147);
+  text-decoration: underline;
+}
+
+/*color1: rgb(54,54,54);
+color2: rgb(233,230,220);
+color3: rgb(209,68,20);
+color4: rgb(255,209,65);
+color5: rgb(246,246,246);
+color6: rgb(46,163,147);*/
