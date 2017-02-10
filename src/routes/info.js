@@ -3,7 +3,7 @@ const path = require('path');
 const YotiClient = require('yoti-node-sdk');
 
 const CLIENT_SDK_ID = process.env.SDK;
-const PEM = process.env.PEM;
+const PEM = fs.readFileSync(path.join(__dirname, '../../keys/help-access-security.pem'));
 const yotiClient = new YotiClient(CLIENT_SDK_ID, PEM);
 
 module.exports = [{
