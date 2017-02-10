@@ -72,9 +72,16 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: underline;
 }
 
-/*color1: rgb(54,54,54);
-color2: rgb(233,230,220);
-color3: rgb(209,68,20);
-color4: rgb(255,209,65);
-color5: rgb(246,246,246);
-color6: rgb(46,163,147);*/
+#clock {
+  margin-top: 10px;
+}
+
+#expect-time {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#yoti-logo {
+  margin: 10px 0px;
+  width: 80px;
+}
