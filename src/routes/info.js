@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const YotiClient = require('yoti-node-sdk');
 
-const CLIENT_SDK_ID = '8a4dcb2a-9ed6-4d44-9a55-12b581bb5e64';
+const CLIENT_SDK_ID = process.env.SDK;
 const PEM = fs.readFileSync(path.join(__dirname, '../../keys/help-access-security.pem'));
 const yotiClient = new YotiClient(CLIENT_SDK_ID, PEM);
 
