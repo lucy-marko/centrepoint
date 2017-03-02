@@ -2,6 +2,24 @@
 
 An app to allow former Centrepoint residents access their Centrepoint address history and information that they may require for their new tenancy agreements.
 
+## Installation instructions
+
+- Clone this repo and `cd` into it
+- Install Postgres ([see here for instructions](https://github.com/dwyl/learn-postgresql))
+- Enter Postgres command line tool (`psql postgres` on Mac)
+- Create database by typing `CREATE DATABASE ocdb;`
+- Ask us for the database password
+- Add user 'centrepoint' and assign as the owner of the database:  
+  `CREATE USER centrepoint WITH SUPERUSER PASSWORD 'password-here';`  
+  `ALTER DATABASE exresident_requests OWNER TO centrepoint;`
+- Create a `config.env` file with the following two lines:  
+  `export DB_URL = postgres://centrepoint:password-here@localhost:5432/exresident_requests`
+  `export DB_MAX_CONNECTIONS = 2`   
+- Run `npm install` to install all dependencies
+- Run `npm run build` to build the database
+- Run `npm start` to start the server
+- Navigate to `http://localhost:9443/` in your browser
+
 ## User stories
 
 **As a** former resident of Centrepoint  
