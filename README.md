@@ -20,6 +20,12 @@ An app to allow former Centrepoint residents access their Centrepoint address hi
 - Run `npm start` to start the server
 - Navigate to `http://localhost:9443/` in your browser
 
+#### In order to set up an HTTPS server
+- generate a key file for your certificate  ($ openssl genrsa -out key.pem 2048)
+- generate an intermediate file (csr)  ($ openssl req -new -key key.pem -out csr.pem)
+- generate a certificate file, using the key and csr ($ openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem)
+- remove the intermediate csr file
+
 ## User stories
 
 **As a** former resident of Centrepoint  
