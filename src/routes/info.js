@@ -20,6 +20,7 @@ module.exports = [{
       });
       return;
     }
+    req.cookieAuth.set({auth: token});
     let promise = yotiClient.getActivityDetails(token);
     promise.then((activityDetails) => {
       let context = activityDetails.profile;
