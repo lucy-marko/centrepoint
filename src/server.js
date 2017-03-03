@@ -27,10 +27,10 @@ server.register([inert, vision], (err) => {
     engines: {
       html: handlebars
     },
-    path: 'views',
-    layoutPath: 'views/layout',
+    path: 'src/views',
+    layoutPath: 'src/views/layout',
     layout: 'default',
-    partialsPath: 'views/partials'
+    partialsPath: 'src/views/partials'
   });
 
   server.route(routes);
