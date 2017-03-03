@@ -7,7 +7,7 @@ An app to allow former Centrepoint residents access their Centrepoint address hi
 - Clone this repo and `cd` into it
 - Install Postgres ([see here for instructions](https://github.com/dwyl/learn-postgresql))
 - Enter Postgres command line tool (`psql postgres` on Mac)
-- Create database by typing `CREATE DATABASE ocdb;`
+- Create database by typing `CREATE DATABASE exresident_requests;`
 - Ask us for the database password
 - Add user 'centrepoint' and assign as the owner of the database:  
   `CREATE USER centrepoint WITH SUPERUSER PASSWORD 'password-here';`  
