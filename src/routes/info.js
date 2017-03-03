@@ -20,25 +20,23 @@ module.exports = [{
       return;
     }
     req.cookieAuth.set({auth: token});
-    let promise = yotiClient.getActivityDetails(token);
-    promise.then((activityDetails) => {
+
+    yotiClient
+    .getActivityDetails(token)
+    .then((activityDetails) => {
       let context = activityDetails.profile;
       context.userId = activityDetails.receipt.remember_me_id;
-
       nameHandler(context);
-
       yotiToDb(context, function (err, data) {
-        if(err) {
+        if (err) {
           console.log("There was an error adding user: ", err);
         }
         reply.view('info', context);
       });
-    }).catch((err) => {
+    })
+    .catch((err) => {
       console.error(err);
-      reply.view('error', {
-        error : err
-      });
-      return;
+      reply.view('error', {error: err});
     })
   }
 }];
