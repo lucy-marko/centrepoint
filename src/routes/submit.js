@@ -23,7 +23,7 @@ module.exports = [{
         return;
       }
       yotiClient
-      .getActivityDetails(token);
+      .getActivityDetails(token)
       .then((activityDetails) => {
         let requestUserId = activityDetails.receipt.remember_me_id;
         addFormData(req.payload, requestUserId, (err) => {
