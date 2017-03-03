@@ -7,6 +7,7 @@ const vision = require('vision');
 const routes = require('./routes/index.js');
 const fs = require('fs');
 const path = require('path');
+const CookieAuth = require('hapi-auth-cookie');
 
 const server = new hapi.Server();
 
@@ -20,7 +21,7 @@ server.connection ({
   tls: tls
 });
 
-server.register([inert, vision], (err) => {
+server.register([inert, vision, CookieAuth], (err) => {
   if (err) throw err;
 
   server.views({
@@ -33,8 +34,18 @@ server.register([inert, vision], (err) => {
     partialsPath: 'src/views/partials'
   });
 
+  server.auth.strategy('base', 'cookie', options)
+
   server.route(routes);
 
 });
+
+
+const options = {
+    password: 'D8M8#7PqdkRbb}/=NhvG#(B&/tA6v:unC2S',
+    cookie: 'yoti-cookie',
+    isSecure: false,
+    ttl: 24 * 60 * 60 * 1000
+};
 
 module.exports = server;

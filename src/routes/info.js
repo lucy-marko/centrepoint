@@ -19,6 +19,7 @@ module.exports = [{
       });
       return;
     }
+    req.cookieAuth.set({auth: token});
     let promise = yotiClient.getActivityDetails(token);
     promise.then((activityDetails) => {
       let context = activityDetails.profile;
@@ -35,7 +36,7 @@ module.exports = [{
           console.log("There was an error adding user: ", err);
         }
         reply.view('info', context);
-      });      
+      });
     }).catch((err) => {
       console.error(err);
       reply.view('error', {
