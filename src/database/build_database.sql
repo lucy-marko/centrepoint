@@ -21,13 +21,15 @@ CREATE TABLE requests (
   rental_arrears BOOLEAN,
   rental_history BOOLEAN,
   other_requests TEXT,
-  email TEXT UNIQUE,
-  address TEXT,
+  email TEXT,
+  street TEXT,
+  town TEXT,
+  postcode TEXT,
   time_stamp TIMESTAMP WITH TIME ZONE,
   user_id SERIAL REFERENCES users (user_id)
 );
 
-INSERT INTO requests (rental_reference, rental_arrears, rental_history, other_requests, email, address, time_stamp, user_id) VALUES (TRUE, FALSE, FALSE, 'also some other report', 'hello@gmail.com', NULL, current_timestamp, 1);
+INSERT INTO requests (rental_reference, rental_arrears, rental_history, other_requests, email, street, town, postcode, time_stamp, user_id) VALUES (TRUE, FALSE, FALSE, 'also some other report', 'hello@gmail.com', NULL, NULL, NULL, current_timestamp, 1);
 
 SELECT * FROM requests;
 
