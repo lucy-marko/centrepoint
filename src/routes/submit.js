@@ -22,23 +22,19 @@ module.exports = [{
         });
         return;
       }
-      let promise = yotiClient.getActivityDetails(token);
-      promise.then((activityDetails) => {
+      yotiClient
+      .getActivityDetails(token)
+      .then((activityDetails) => {
         let requestUserId = activityDetails.receipt.remember_me_id;
-
         addFormData(req.payload, requestUserId, (err) => {
           if(err) {
             console.log("Form data error: ", err);
           }
-          return reply.view('thankyou');
+          reply.view('thankyou');
         });
-
       }).catch((err) => {
         console.error(err);
-        reply.view('error', {
-          error : err
-        });
-        return;
+        reply.view('error', {error : err});
       })
     }
   }
