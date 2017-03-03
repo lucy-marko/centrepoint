@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/start.js",
     "watch": "nodemon src/start.js -e js,html",
-    "build": "node database/build_database.js"
+    "build": "node src/database/build_database.js"
   },
   "repository": {
     "type": "git",
