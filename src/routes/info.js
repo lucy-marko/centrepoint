@@ -1,8 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const YotiClient = require('yoti-node-sdk');
-const dbConn = require('../database/db_connection');
-const yotiToDb = require('./userToDatabase.js');
+const yotiToDb = require('../helpers/userToDatabase.js');
 const nameHandler = require('../helpers/name-handler.js');
 
 const CLIENT_SDK_ID = "8a4dcb2a-9ed6-4d44-9a55-12b581bb5e64";
@@ -25,7 +24,7 @@ module.exports = [{
     promise.then((activityDetails) => {
       let context = activityDetails.profile;
       context.userId = activityDetails.receipt.remember_me_id;
-      
+
       nameHandler(context);
 
       yotiToDb(context, function (err, data) {
