@@ -21,11 +21,12 @@
   "dependencies": {
     "handlebars": "^4.0.6",
     "hapi": "^15.2.0",
+    "hapi-auth-cookie": "^6.1.1",
     "inert": "^4.0.2",
+    "pg": "^6.1.2",
     "request": "^2.79.0",
     "vision": "^4.1.0",
-    "yoti-node-sdk": "^1.0.2",
-    "pg": "^6.1.2"
+    "yoti-node-sdk": "^1.0.2"
   },
   "devDependencies": {
     "env2": "^2.1.1",
