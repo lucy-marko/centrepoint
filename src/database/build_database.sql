@@ -1,15 +1,15 @@
 DROP TABLE IF EXISTS users cascade;
 
 CREATE TABLE users (
-  user_id SERIAL PRIMARY KEY NOT NULL,
-  first_name TEXT,
+  user_id TEXT PRIMARY KEY NOT NULL,
+  given_names TEXT,
   last_name TEXT,
   birth_date DATE,
   phone BIGINT,
   photo BYTEA
 );
 
-INSERT INTO users (first_name, last_name, birth_date, phone) VALUES ('Lucy', 'Monie', '1/1/2000', 07123456789);
+INSERT INTO users (user_id, given_names, last_name, birth_date, phone) VALUES ('xFv5nFhg74HjsolcjDeDDhhbvgcf08G9f4Xf1', 'Nori', 'Denes', '1/1/2000', 07123456789);
 
 SELECT * FROM users;
 
@@ -26,10 +26,10 @@ CREATE TABLE requests (
   town TEXT,
   postcode TEXT,
   time_stamp TIMESTAMP WITH TIME ZONE,
-  user_id SERIAL REFERENCES users (user_id)
+  user_id TEXT REFERENCES users (user_id)
 );
 
-INSERT INTO requests (rental_reference, rental_arrears, rental_history, other_requests, email, street, town, postcode, time_stamp, user_id) VALUES (TRUE, FALSE, FALSE, 'also some other report', 'hello@gmail.com', NULL, NULL, NULL, current_timestamp, 1);
+INSERT INTO requests (rental_reference, rental_arrears, rental_history, other_requests, email, street, town, postcode, time_stamp, user_id) VALUES (TRUE, FALSE, FALSE, 'also some other report', 'hello@gmail.com', NULL, NULL, NULL, current_timestamp, 'xFv5nFhg74HjsolcjDeDDhhbvgcf08G9f4Xf1');
 
 SELECT * FROM requests;
 
