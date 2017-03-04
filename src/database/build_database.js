@@ -3,7 +3,7 @@ const env = require('env2');
 
 env('./config.env');
 
-const dbConn = require('./db_connection');
+const dbConn = require('./connection');
 
 const sql = fs.readFileSync(`${__dirname}/build_database.sql`).toString();
 
