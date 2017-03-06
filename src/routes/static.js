@@ -1,6 +1,6 @@
 module.exports = {
   method:'GET',
-  path:'/{file*}',
+  path:'/public/{file*}',
   handler: {
     directory: {
       path: 'public'
