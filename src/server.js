@@ -1,13 +1,13 @@
 "use strict";
 
 const hapi = require('hapi');
-const handlebars = require('handlebars');
-const inert = require('inert');
-const vision = require('vision');
-const routes = require('./routes/index.js');
 const fs = require('fs');
 const path = require('path');
+const inert = require('inert');
+const vision = require('vision');
+const handlebars = require('handlebars');
 const CookieAuth = require('hapi-auth-cookie');
+const routes = require('./routes/index.js');
 
 const server = new hapi.Server();
 
@@ -23,7 +23,6 @@ server.connection ({
 
 server.register([inert, vision, CookieAuth], (err) => {
   if (err) throw err;
-
   server.views({
     engines: {
       html: handlebars
@@ -33,13 +32,9 @@ server.register([inert, vision, CookieAuth], (err) => {
     layout: 'default',
     partialsPath: 'src/views/partials'
   });
-
   server.auth.strategy('base', 'cookie', options)
-
   server.route(routes);
-
 });
-
 
 const options = {
     password: 'D8M8#7PqdkRbb}/=NhvG#(B&/tA6v:unC2S',

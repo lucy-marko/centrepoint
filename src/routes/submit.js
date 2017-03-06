@@ -1,13 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const YotiClient = require('yoti-node-sdk');
-const addFormData = require('../helpers/add-form-data');
+const requestTable = require('../database/tables/requests');
+const requestHelper = require('../helpers/requestHelper');
 
 const CLIENT_SDK_ID = "8a4dcb2a-9ed6-4d44-9a55-12b581bb5e64";
 const PEM = fs.readFileSync(path.join(__dirname, '../../keys/help-access-security.pem'));
 const yotiClient = new YotiClient(CLIENT_SDK_ID, PEM);
 
-module.exports = [{
+module.exports = {
   method: 'POST',
   path:'/submit',
   config: {
@@ -20,13 +21,12 @@ module.exports = [{
         reply.view('error', {
           error : "No token has been provided."
         });
-        return;
       }
       yotiClient
       .getActivityDetails(token)
       .then((activityDetails) => {
-        let requestUserId = activityDetails.receipt.remember_me_id;
-        addFormData(req.payload, requestUserId, (err) => {
+        let request = requestHelper.getRequest(req.payload, activityDetails);
+        requestTable.insert(request, (err) => {
           if(err) {
             console.log("Form data error: ", err);
           }
@@ -34,8 +34,8 @@ module.exports = [{
         });
       }).catch((err) => {
         console.error(err);
-        reply.view('error', {error : err});
+        reply.view('error', { error : err });
       })
     }
   }
-}];
+};
