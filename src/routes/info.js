@@ -28,7 +28,7 @@ module.exports = {
         if (err) {
           console.log("There was an error adding user: ", err);
         }
-        reply.view('info', firstName);
+        reply.view('info', { firstName });
       });
     }).catch((err) => {
       console.error(err);
