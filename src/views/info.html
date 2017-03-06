@@ -3,64 +3,57 @@
 
 <div class="container">
   <div class="row">
-    <h4 class="info-header info-check top center-align" id="welcome2">Hi {{firstName}}. How can we help?</h4>
-
-  <form action="/submit" method="post">
-    <div class="col offset-s1">
-      <p class="info-check">
-        <input name="rentalHistory" type="checkbox" class="filled-in" id="history" />
-        <label for="history">Accommodation history</label>
-      </p>
-
-      <p class="info-check">
-        <input name="rentalArrears" type="checkbox" class="filled-in" id="arrears" />
-        <label for="arrears">Rent arreares report</label>
-      </p>
-
-      <p class="info-check">
-        <input name="rentalReference" type="checkbox" class="filled-in" id="reference" />
-        <label for="reference">Rental reference</label>
-      </p>
-
-      <div class="other">
-        Other?
-        <div class="input-field inline">
-          <input name="otherRequests" id="other" type="text" class="validate">
-          <label for="other"></label>
+  <h4 class="info-header info-check top center-align" id="welcome2">Hi {{firstName}}. How can we help?</h4>
+    <form action="/submit" method="post">
+      <div class="col offset-s1">
+        <p class="info-check">
+          <input name="rentalHistory" type="checkbox" class="filled-in" id="history" />
+          <label for="history">Accommodation history</label>
+        </p>
+        <p class="info-check">
+          <input name="rentalArrears" type="checkbox" class="filled-in" id="arrears" />
+          <label for="arrears">Rent arreares report</label>
+        </p>
+        <p class="info-check">
+          <input name="rentalReference" type="checkbox" class="filled-in" id="reference" />
+          <label for="reference">Rental reference</label>
+        </p>
+        <div class="other">
+          Other?
+          <div class="input-field inline">
+            <input name="otherRequests" id="other" type="text" class="validate">
+            <label for="other"></label>
+          </div>
         </div>
       </div>
     </div>
+    <div class="container">
+      <h4 class="info-header center-align">Sending your information</h4>
+       <ul class="collapsible" data-collapsible="accordion">
+         <li>
+           <div class="collapsible-header"><i class="fa fa-at" aria-hidden="true"></i>Email me</div>
+           <div class="collapsible-body">
+             <span class="timeframe">We process email requests in 24 hours</span>
+             <input name="email" placeholder="Your email here" id="email" type="email" class="validate">
+             <label for="email" data-error="make sure you've entered a valid email" data-success="right"></label>
+           </div>
+         </li>
+         <li>
+           <div class="collapsible-header"><i class="small material-icons">email</i>Post it to me</div>
+           <div class="collapsible-body">
+             <span class="timeframe">Postal requests take up to 5 days</span>
+             <input name="street" placeholder="Street or PO Box" id="street" type="text" class="col s12">
+             <input name="town" placeholder="Town" id="town" type="text" class="col s6">
+             <input name="postcode" placeholder="Postcode" id="postcode" type="text" class="col s6">
+           </div>
+         </li>
+       </ul>
+      </div>
+      <div class="center-align submit-btn">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+     </form>
   </div>
-
-
-  <div class="container">
-    <h4 class="info-header center-align">Sending your information</h4>
-     <ul class="collapsible" data-collapsible="accordion">
-       <li>
-         <div class="collapsible-header"><i class="fa fa-at" aria-hidden="true"></i>Email me</div>
-         <div class="collapsible-body">
-           <span class="timeframe">We process email requests in 24 hours</span>
-           <input name="email" placeholder="Your email here" id="email" type="email" class="validate">
-           <label for="email" data-error="make sure you've entered a valid email" data-success="right"></label>
-         </div>
-       </li>
-       <li>
-         <div class="collapsible-header"><i class="small material-icons">email</i>Post it to me</div>
-         <div class="collapsible-body">
-           <span class="timeframe">Postal requests take up to 5 days</span>
-           <input name="street" placeholder="Street or PO Box" id="street" type="text" class="col s12">
-           <input name="town" placeholder="Town" id="town" type="text" class="col s6">
-           <input name="postcode" placeholder="Postcode" id="postcode" type="text" class="col s6">
-         </div>
-       </li>
-     </ul>
-    </div>
-
-    <div class="center-align submit-btn">
-      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-        <i class="material-icons right">send</i>
-      </button>
-    </div>
-
-   </form>
 </div>

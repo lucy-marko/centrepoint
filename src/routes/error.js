@@ -4,6 +4,6 @@ module.exports = {
     handler: (req, reply) => {
       reply.view('error', {
         error : "Requested page not found."
-      });
+      }).code(404);
     }
 };
