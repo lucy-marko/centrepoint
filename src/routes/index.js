@@ -1,7 +1,8 @@
 module.exports = [
   './landing.js',
-  './info.js',
   './static.js',
+  './info.js',
   './submit.js',
+  './logout.js',
   './error.js'
 ].map(require);
