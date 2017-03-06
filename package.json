@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/start.js",
-    "watch": "nodemon src/start.js -e js,html",
+    "test": "tape 'test/**/*.js'",
+    "watch": "nodemon -q -x 'npm test'",
     "build": "node src/database/build_database.js"
   },
   "repository": {
@@ -30,7 +31,8 @@
   },
   "devDependencies": {
     "env2": "^2.1.1",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "tape": "^4.6.3"
   },
   "engines": {
     "node": "6.9.0"

@@ -1,60 +1,43 @@
 {{!< layout/default}}
 {{> header}}
 
-    <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <h4 class="center-align" id="welcome">WELCOME</h4>
-                <div class="divider"></div>
-                <p class="center-align">You can use this app to request information from when you were at Centrepoint</p>
-                  <div class="container">
-                    <ul class="margin-left">
-                        <li><i class="tiny material-icons padding-right">done</i> Address history</li>
-                        <li><i class="tiny material-icons padding-right">done</i> Rent arrears report</li>
-                        <li><i class="tiny material-icons padding-right">done</i> Rental references</li>
-                    </ul>
-                  </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container center">
-        <div class="row">
-            <div class="col s12">
-                <div class="divider"></div>
-                <p>First step &#8212; log in using YOTI so we can check you are who you say you are!</p>
-
-                <span
-                  data-yoti-application-id="786f5bed-5638-4f40-bc0a-ee65b9f817f9"
-                  data-yoti-type="inline"
-                  data-yoti-scenario-id="ae8a4de4-0e85-4bfc-baad-1df239e90371"
-                  data-size="medium"
-                  data-target="embed">
-                  LOG IN WITH YOTI
-                </span>
-
-                <!-- <div class="btn" id="yoti-button">
-                  <span>
-                    <a target="_self" href=href="https://code.yoti.com/CAEaJGRiNTBiZTA5LTI5YjAtNGEzYi05M2JkLTMxNDYwNTNiOGY0NDAC?callback=https%3A%2F%2Flocalhost%3A9443%2Finfo&amp;id=786f5bed-5638-4f40-bc0a-ee65b9f817f9&amp;mobile=true" href="https://code.yoti.com/CAEaJGRiNTBiZTA5LTI5YjAtNGEzYi05M2JkLTMxNDYwNTNiOGY0NDAC?callback=https%3A%2F%2Flocalhost%3A9443%2Finfo&amp;id=786f5bed-5638-4f40-bc0a-ee65b9f817f9&amp;mobile=true" data-application-id="786f5bed-5638-4f40-bc0a-ee65b9f817f9"
-                        data-scenario-id="ae8a4de4-0e85-4bfc-baad-1df239e90371">Log in with Yoti</a>
-                  </span>
-                </div> -->
-
-                <ul>
-                    <li class="center-align"><a id="yoti-links" target="_blank" href="https://www.yoti.com/ ">Don't have Yoti yet?</a></li>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h4 class="center-align" id="welcome">WELCOME</h4>
+            <div class="divider"></div>
+            <p class="center-align">You can use this app to request information from when you were at Centrepoint</p>
+              <div class="container">
+                <ul class="margin-left">
+                    <li><i class="tiny material-icons padding-right">done</i> Address history</li>
+                    <li><i class="tiny material-icons padding-right">done</i> Rent arrears report</li>
+                    <li><i class="tiny material-icons padding-right">done</i> Rental references</li>
                 </ul>
+              </div>
             </div>
-
         </div>
     </div>
-
-
-
-    <!-- We may want to add a property to the context object that calculates the number of hours it
-        will take to hear back from Centrepoint based on whether it's a weekday or the weekend -->
-
-    <script>
-        _ybg.config.service = 'https://www.yoti.com/connect/'
-        _ybg.init()
-    </script>
+</div>
+<div class="container center">
+    <div class="row">
+        <div class="col s12">
+            <div class="divider"></div>
+            <p>First step &#8212; log in using YOTI so we can check you are who you say you are!</p>
+            <span
+              data-yoti-application-id="786f5bed-5638-4f40-bc0a-ee65b9f817f9"
+              data-yoti-type="inline"
+              data-yoti-scenario-id="ae8a4de4-0e85-4bfc-baad-1df239e90371"
+              data-size="medium"
+              data-target="embed">
+              LOG IN WITH YOTI
+            </span>
+            <ul>
+                <li class="center-align"><a id="yoti-links" target="_blank" href="https://www.yoti.com/ ">Don't have Yoti yet?</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    _ybg.config.service = 'https://www.yoti.com/connect/'
+    _ybg.init()
+</script>
