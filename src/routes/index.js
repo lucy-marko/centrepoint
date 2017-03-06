@@ -1,6 +1,6 @@
-module.exports = [].concat(
-  require('./login.js'),
-  require('./info.js'),
-  require('./static.js'),
-  require('./submit.js')
-);
+module.exports = [
+  './landing.js',
+  './info.js',
+  './static.js',
+  './submit.js'
+].map(require);
