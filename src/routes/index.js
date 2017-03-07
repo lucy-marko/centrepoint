@@ -3,5 +3,6 @@ module.exports = [
   './info.js',
   './static.js',
   './submit.js',
-  './error.js'
+  './error.js',
+  './dashboard.js'
 ].map(require);

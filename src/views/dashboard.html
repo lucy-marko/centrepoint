@@ -1,0 +1,34 @@
+{{!< layout/default}}
+
+<div class="container col s12 m10 l10">
+  <h4 class="left-align">Centrepoint ex-residents dashboard</h4>
+       <ul class="collapsible" data-collapsible="accordion">
+         <li>
+           <div class="collapsible-header">
+             <div class="row top">
+               <span class="header__name col s4 m4 l4">Name: {{given_names}} {{family_name}}</span>
+               <span class="header__subject col s4 m4 l4">Subject: Information request</span>
+               <span class="header__date col s4 m4 l4">Date: {{time_stamp}}</span>
+             </div>
+           </div>
+           <div class="collapsible-body">
+             <div class="row">
+               <div class="col s2 m2 l2">Birthdate:</div><div class="col s4 m4 l4">{{birth_date}}</div>
+             </div>
+
+             <div class="row">
+               <div class="col s2 m2 l2">Address:</div><div class="col s4 m4 l4">{{street}}</div><br>
+               <div class="col s4 m4 l4 push-l2">{{town}}, {{postcode}}</div>
+             </div>
+
+            <div class="row">
+               <div class="col s2 m2 l2">Phone:</div><div class="col s4 m4 l4">{{phone_number}}</div>
+             </div>
+
+             <div class="row">
+               <div class="col s2 m2 l2">Email:</div><div class="col s4 m4 l4">{{email}}</div>
+            </div>
+           </div>
+         </li>
+       </ul>
+</div>
