@@ -11,8 +11,8 @@ module.exports = {
       street: '53 St Omers Road',
       town: 'Hindlip',
       postcode: 'WR3 8AS',
-      accommodation history:true,
-      rental arrears report: true,
+      accommodation_history: true,
+      rental_arrears_report: true,
       rental_reference: false,
       other_requests: false,
       time_stamp: '2017-03-03T14:10:17Z'

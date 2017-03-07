@@ -27,18 +27,30 @@ module.exports = {
     .then((activityDetails) => {
       let user = userHelper.getUser(activityDetails);
       let firstName = userHelper.getFirstName(user);
-      userTable.insert(user, function (err, data) {
+      userTable.queryUserId(user, function (err, data) {
         if (err) {
           console.log("Error adding user: ", err);
           return reply.view('error', {
             error : databaseError
           });
         }
-        reply.view('info', { firstName });
+        console.log(data);
+        if (data.length) {
+          return reply.view('info', { firstName });
+        }
+        userTable.insert(user, function (err, data) {
+          if (err) {
+            console.log("Error adding user: ", err);
+            return reply.view('error', {
+              error : databaseError
+            });
+          }
+          return reply.view('info', { firstName });
+        });
       });
     }).catch((err) => {
       console.error(err);
-      reply.view('error', {
+      return reply.view('error', {
         error : loginError
       });
     });
