@@ -21,7 +21,7 @@ module.exports = {
       let token = req.auth.credentials.auth;
       if(!token) {
         console.log("No token provided");
-        reply.view('error', {
+        return reply.view('error', {
           error : yotiError
         });
       }
@@ -32,7 +32,7 @@ module.exports = {
         requestTable.insert(request, (err) => {
           if(err) {
             console.log("Form data error: ", err);
-            reply.view('error', {
+            return reply.view('error', {
               error : databaseError
             });
           }

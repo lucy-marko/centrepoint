@@ -1,11 +1,11 @@
 const test = require('tape');
 const userHelper = require('../src/helpers/userHelper.js');
-const sampleActivityObj = require('../sampleActivityData.js')
+const sampleActivityData = require('./sampleActivityData.js')
+const sampleUser = require('./sampleUser.js')
 
 test('check that getUser function extracts a user id from activity details', function (t) {
-  let user = userHelper.getUser(sampleActivityObj);
-  t.equal(typeof user.id, 'string');
-  t.equal(user.id.length, 64);
+  let user = userHelper.getUser(sampleActivityData);
+  t.deepEqual(user, sampleUser);
   t.end();
 });
 

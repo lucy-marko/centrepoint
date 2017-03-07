@@ -17,7 +17,7 @@ module.exports = {
     let token = req.query.token;
     if(!token) {
       console.log("No token provided");
-      reply.view('error', {
+      return reply.view('error', {
         error : loginError
       });
     }
@@ -30,7 +30,7 @@ module.exports = {
       userTable.insert(user, function (err, data) {
         if (err) {
           console.log("Error adding user: ", err);
-          reply.view('error', {
+          return reply.view('error', {
             error : databaseError
           });
         }
