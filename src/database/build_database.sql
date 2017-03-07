@@ -6,10 +6,12 @@ CREATE TABLE users (
   family_name TEXT,
   birth_date DATE,
   phone_number BIGINT,
-  photo BYTEA
+  photo BYTEA,
+  admin BOOLEAN
 );
 
-INSERT INTO users (id, given_names, family_name, birth_date, phone_number) VALUES ('xFv5nFhg74HjsolcjDeDDhhbvgcf08G9f4Xf1', 'Nori', 'Denes', '1/1/2000', 07123456789);
+INSERT INTO users (id, given_names, family_name, birth_date, phone_number, admin) VALUES ('xFv5nFhg74HjsolcjDeDDhhbvgcf08G9f4Xf1', 'Nori', 'Denes', '1/1/2000', 07123456789, false);
+INSERT INTO users (id, given_names, family_name, birth_date, phone_number, admin) VALUES ('Re5xYlrYsu8ctaxPN2g7zZYGHSKOHotA6UYABPmadPvMaPs3ssziv0iEBd75zfi2', 'MARKO', 'SUSTARSIC', '1988-02-21', 447811110722, false);
 
 SELECT * FROM users;
 

@@ -34,8 +34,8 @@ module.exports = {
             error : databaseError
           });
         }
-        console.log(data);
         if (data.length) {
+          if (data[0].admin) return reply.redirect('/dashboard');
           return reply.view('info', { firstName });
         }
         userTable.insert(user, function (err, data) {
