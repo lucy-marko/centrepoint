@@ -11,10 +11,6 @@ body {
   font-size: 22px;
 }
 
-.container {
-  /*width: 330px;*/
-}
-
 .info-check, .other {
   margin-left: 10px;
 }
