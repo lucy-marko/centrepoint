@@ -3,3 +3,4 @@
 node_modules
 config.env
 keys
+src/database/build_database.sql

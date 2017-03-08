@@ -13,9 +13,7 @@ module.exports = {
           error: databaseError
         });
       }
-      console.log(data.rows);
-
-      reply.view('dashboard', { requests: data.rows });
+      return reply.view('dashboard', { requests: data.rows });
     });
   }
 }
