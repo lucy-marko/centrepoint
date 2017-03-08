@@ -9,6 +9,6 @@ module.exports.insert = (user, cb) => {
 
 module.exports.queryUserId = (user, cb) => {
   dbConn.query('SELECT * FROM users WHERE id=($1);', [user.id], (error, data) => {
-    error ? cb(error) : cb(null, data.rows);
+    error ? cb(error) : cb(null, data.rows[0]);
   });
 };
