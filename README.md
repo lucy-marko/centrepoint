@@ -83,10 +83,19 @@ An app to allow former Centrepoint residents access their Centrepoint address hi
 - Styling and animations
 - Prepare for demo & presentation
 
-## Wireframes
+## App flow
+
+<img src="./wireframes/app-flow.png" width="400"/>
+
+## Ex-resident app wireframes
 
 <img src="./wireframes/wireframes-12.JPG" width="400"/>
 <img src="./wireframes/wireframes-34.JPG" width="300"/>
+
+## Admin dashboard wireframes
+
+<img src="./wireframes/Dashboard.png" width="500"/>
+<img src="./wireframes/Dashboard-open-req.png" width="500"/>
 
 ## Database schema
 
