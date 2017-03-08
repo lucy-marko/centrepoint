@@ -1,24 +1,37 @@
-const retrieveData = require('./../database/tables/retrieveRequests.js')
-const databaseError = "There was a problem processing your data, please try again. If this problem persists, contact our technical team.";
+const authMiddleware = require('../helpers/authMiddleware.js')
+const retrieveData = require('../database/tables/retrieveRequests.js')
+
+const databaseError = "There was a problem retrieving data, please try again. If this problem persists, contact our technical team.";
+const authenticationError = "You are not authenticated to access the data. If you are a Centrepoint administrator, contact our technical team."
 
 module.exports = {
   method: 'GET',
   path:'/dashboard',
-  handler: (req, reply) => {
-
-    retrieveData.retrieve(function (err, data) {
-      if (err) {
-        console.log("Error retrieving requests: ", err);
+  config: {
+    auth: {
+      strategy: 'base'
+    },
+    pre: [
+        { method: authMiddleware, assign: 'data' }
+    ],
+    handler: (req, reply) => {
+      if (! req.pre.data[0].admin) {
         return reply.view('error', {
-          error: databaseError
+          error : authenticationError
         });
       }
-      console.log(data.rows);
-
-      reply.view('dashboard', { requests: data.rows });
-    });
+      retrieveData.retrieve(function (err, data) {
+        if (err) {
+          console.log("Error retrieving requests: ", err);
+          return reply.view('error', {
+            error: databaseError
+          });
+        }
+        reply.view('dashboard', { requests: data.rows });
+      });
+    }
   }
-}
+};
 //
 //     reply.view('dashboard',
 //     { requests: [
