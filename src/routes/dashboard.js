@@ -15,6 +15,7 @@ module.exports = {
         { method: authMiddleware, assign: 'data' }
     ],
     handler: (req, reply) => {
+      
       if (! req.pre.data[0].admin) {
         return reply.view('error', {
           error : authenticationError
@@ -28,8 +29,8 @@ module.exports = {
           });
         }
         reply.view('dashboard', { requests: data.rows });
-      });
-    }
+      }); 
+    } 
   }
 };
 //
