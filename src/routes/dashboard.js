@@ -1,6 +1,5 @@
 const authMiddleware = require('../helpers/authMiddleware.js')
 const requestTable = require('../database/tables/requests.js')
-
 const databaseError = "There was a problem retrieving data, please try again. If this problem persists, contact our technical team.";
 const authenticationError = "You are not authenticated to access the data. If you are a Centrepoint administrator, contact our technical team."
 
@@ -12,10 +11,10 @@ module.exports = {
       strategy: 'base'
     },
     pre: [
-        { method: authMiddleware, assign: 'data' }
+        { method: authMiddleware, assign: 'userData' }
     ],
     handler: (req, reply) => {
-      if (! req.pre.data.admin) {
+      if (! req.pre.userData.admin) {
         return reply.view('error', {
           error : authenticationError
         });

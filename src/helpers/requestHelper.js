@@ -1,5 +1,5 @@
-module.exports.getRequest = function (payload, activityDetails) {
-  let request = payload;
-  request.userId = activityDetails.receipt.remember_me_id;
-  return request;
+module.exports.getRequest = function (userData, activityDetails) {
+  let userDataWithId = userData;
+  userDataWithId.userId = activityDetails.receipt.remember_me_id;
+  return userDataWithId;
 };
