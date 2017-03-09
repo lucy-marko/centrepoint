@@ -1,26 +1,41 @@
 {{!< layout/default}}
 
 <div class="container col s12 m10 l10">
-  <h4 class="left-align">Centrepoint ex-residents dashboard</h4>
+  <a href="/" class="brand-logo left">
+    <img class="responsive-image" src="https://centrepoint.org.uk/media/1001/logo-centrepoint.png" alt="centrepoint-logo" />
+  </a>
+  <h4 class="dashboard__head">Ex-residents dashboard</h4>
        <ul class="collapsible" data-collapsible="accordion">
+         <li>
+           <div>
+             <h5 class="row top padding-left">
+               <span class="header__name col s4 m4 l4">Name</span>
+               <span class="header__subject col s4 m4 l4">Subject</span>
+               <span class="header__date col s4 m4 l4">Date</span>
+             </h5>
+           </div>
+         </li>
          {{#each requests}}
          <li>
            <div class="collapsible-header">
              <div class="row top">
-               <span class="header__name col s4 m4 l4">Name: {{this.given_names}} {{this.family_name}}</span>
-               <span class="header__subject col s4 m4 l4">Subject: Information request</span>
-               <span class="header__date col s4 m4 l4">Date: {{this.time_stamp_formatted}}</span>
+               <span class="header__name col s4 m4 l4">{{this.given_names}} {{this.family_name}}</span>
+               <span class="header__subject col s4 m4 l4">Information request</span>
+               <span class="header__date col s4 m4 l4">{{this.time_stamp_formatted}}</span>
              </div>
            </div>
+
            <div class="collapsible-body">
              <div class="row">
                <div class="col s2 m2 l2">Birthdate:</div><div class="col s4 m4 l4">{{this.birth_date_formatted}}</div>
              </div>
 
+             {{#if this.street}}
              <div class="row">
                <div class="col s2 m2 l2">Address:</div><div class="col s4 m4 l4">{{this.street}}</div><br>
                <div class="col s4 m4 l4 push-l2">{{this.town}}, {{this.postcode}}</div>
              </div>
+             {{/if}}
 
             <div class="row">
                <div class="col s2 m2 l2">Phone:</div><div class="col s4 m4 l4">{{this.phone_number}}</div>
@@ -31,20 +46,21 @@
             </div>
 
             <div class="row">
-              <div class="col s4 m4 l4">Information requested:</div><br>
-              {{#if this.accommodation_history}}
-                <div class="col s4 m4 l4"><i class="tiny material-icons">done</i> Accommodation history</div><br>
+              <div class="col s4 m4 l4">Information requested:</div>
+            </div>
+              {{#if this.rental_history}}
+                <div class="col s8 m8 l8"><i class="tiny material-icons">done</i> Accommodation history</div>
               {{/if}}
-              {{#if this.rental_arrearsreport}}
-                <div class="col s4 m4 l4"><i class="tiny material-icons">done</i> Rental arrears report</div><br>
+              {{#if this.rental_arrears}}
+                <div class="col s8 m8 l8"><i class="tiny material-icons">done</i> Rental arrears report</div>
               {{/if}}
               {{#if this.rental_reference}}
-                <div class="col s4 m4 l4"><i class="tiny material-icons">done</i> Rental reference</div><br>
+                <div class="col s8 m8 l8"><i class="tiny material-icons">done</i> Rental reference</div>
               {{/if}}
               {{#if this.other_requests}}
-                <div class="col s4 m4 l4"><i class="tiny material-icons">done</i> {{this.other_requests}}</div>
+                <div class="col s8 m8 l8"><i class="tiny material-icons">done</i> {{this.other_requests}}</div>
               {{/if}}
-           </div>
+
            </div>
          </li>
          {{/each}}
