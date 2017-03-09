@@ -21,13 +21,13 @@
              <div class="row top">
                <span class="header__name col s4 m4 l4">{{this.given_names}} {{this.family_name}}</span>
                <span class="header__subject col s4 m4 l4">Information request</span>
-               <span class="header__date col s4 m4 l4">{{this.time_stamp}}</span>
+               <span class="header__date col s4 m4 l4">{{this.time_stamp_formatted}}</span>
              </div>
            </div>
 
            <div class="collapsible-body">
              <div class="row">
-               <div class="col s2 m2 l2">Birthdate:</div><div class="col s4 m4 l4">{{this.birth_date}}</div>
+               <div class="col s2 m2 l2">Birthdate:</div><div class="col s4 m4 l4">{{this.birth_date_formatted}}</div>
              </div>
 
              {{#if this.street}}

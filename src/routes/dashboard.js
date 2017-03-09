@@ -1,5 +1,6 @@
 const authMiddleware = require('../helpers/authMiddleware.js')
-const requestTable = require('../database/tables/requests.js')
+const retrieveData = require('../database/tables/requests.js')
+const formatDates = require('../helpers/dateHelper.js');
 const databaseError = "There was a problem retrieving data, please try again. If this problem persists, contact our technical team.";
 const authenticationError = "You are not authenticated to access the data. If you are a Centrepoint administrator, contact our technical team."
 
@@ -11,21 +12,28 @@ module.exports = {
       strategy: 'base'
     },
     pre: [
-        { method: authMiddleware, assign: 'userData' }
+        { method: authMiddleware, assign: 'data' }
     ],
     handler: (req, reply) => {
-      if (! req.pre.userData.admin) {
+      if (req.pre.data.admin === false) {
         return reply.view('error', {
           error : authenticationError
         });
       }
-      requestTable.retrieve(function (err, data) {
+      retrieveData.retrieve(function (err, data) {
         if (err) {
           console.log("Error retrieving requests: ", err);
           return reply.view('error', {
             error: databaseError
           });
         }
+        var userData = [];
+        data.map(function(user) {
+          user.birth_date_formatted = formatDates.fixDate(user.birth_date, 'birthDate');
+          user.time_stamp_formatted = formatDates.fixDate(user.time_stamp, 'timeStamp');
+          userData.push(user);
+        });
+        
         reply.view('dashboard', { requests: data });
       });
     }
