@@ -20,13 +20,12 @@ module.exports = {
           error : err
         });
       }
-      if (user) {
+      if (user.exists) {
         if (user.admin === true) {
           return reply.redirect('/dashboard');
         }
         return reply.redirect('/info');
       }
-      let firstName = userHelper.getFirstName(user);
       userTable.insert(user, function (err, data) {
         if (err) {
           return reply.view('error', {
