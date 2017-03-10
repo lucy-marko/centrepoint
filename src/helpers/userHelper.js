@@ -4,7 +4,7 @@ module.exports.getUser = function (activityDetails) {
   return user;
 };
 
-module.exports.getFirstName = function (givenNames) {
-  let rawFirstName = givenNames.split(' ')[0];
+module.exports.getFirstName = function (user) {
+  let rawFirstName = user.givenNames.split(' ')[0];
   return rawFirstName.slice(0,1).concat(rawFirstName.slice(1).toLowerCase());
 };

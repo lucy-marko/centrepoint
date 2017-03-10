@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/start.js",
     "test": "tape 'test/**/*.js'",
-    "watch": "nodemon -q -x 'npm start'",
+    "watch": "nodemon src/start.js -e js,html,css",
     "build": "node src/database/build_database.js"
   },
   "repository": {
