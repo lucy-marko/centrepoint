@@ -18,7 +18,10 @@ module.exports = function (token, callback) {
       if (err) {
         callback(errorHelper.databaseError);
       }
-      user.admin = userData.admin;
+      if (userData) {
+        user.exists = true;
+        user.admin = userData.admin;
+      }
       callback(null, user);
     });
   }).catch((err) => {
