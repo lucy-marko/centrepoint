@@ -1,7 +1,6 @@
 const authMiddleware = require('../helpers/authMiddleware.js');
 const requestTable = require('../database/tables/requests');
-const requestHelper = require('../helpers/requestHelper');
-const databaseError = "There was a problem processing your data, please try again. If this problem persists, contact our technical team.";
+const errorHelper = require('../helpers/errorHelper.js');
 
 module.exports = {
   method: 'POST',
@@ -11,14 +10,13 @@ module.exports = {
       strategy: 'base'
     },
     pre: [
-        { method: authMiddleware, assign: 'userData' }
+        { method: authMiddleware, assign: 'user' }
     ],
     handler: (req, reply) => {
-      requestTable.insert(req.payload, req.pre.userData, (err) => {
+      requestTable.insert(req.payload, req.pre.user, (err) => {
         if(err) {
-          console.log("Form data error: ", err);
           return reply.view('error', {
-            error : databaseError
+            error : errorHelper.databaseError
           });
         }
         reply.view('thankyou');

@@ -1,8 +1,7 @@
 const authMiddleware = require('../helpers/authMiddleware.js')
-const retrieveData = require('../database/tables/requests.js')
+const requestTable = require('../database/tables/requests.js')
 const formatDates = require('../helpers/dateHelper.js');
-const databaseError = "There was a problem retrieving data, please try again. If this problem persists, contact our technical team.";
-const authenticationError = "You are not authenticated to access the data. If you are a Centrepoint administrator, contact our technical team."
+const errorHelper = require('../helpers/errorHelper.js');
 
 module.exports = {
   method: 'GET',
@@ -12,78 +11,29 @@ module.exports = {
       strategy: 'base'
     },
     pre: [
-        { method: authMiddleware, assign: 'data' }
+        { method: authMiddleware, assign: 'user' }
     ],
     handler: (req, reply) => {
-      if (req.pre.data.admin === false) {
+      if (req.pre.user.admin === true) {
+        requestTable.retrieve(function (err, data) {
+          if (err) {
+            return reply.view('error', {
+              error: errorHelper.databaseError
+            });
+          }
+          // var userData = [];
+          // data.map(function(user) {
+          //   user.birth_date_formatted = formatDates.fixDate(user.birth_date, 'birthDate');
+          //   user.time_stamp_formatted = formatDates.fixDate(user.time_stamp, 'timeStamp');
+          //   userData.push(user);
+          // });
+          return reply.view('dashboard', { requests: data });
+        });
+      } else {
         return reply.view('error', {
-          error : authenticationError
+          error : errorHelper.authenticationError
         });
       }
-      retrieveData.retrieve(function (err, data) {
-        if (err) {
-          console.log("Error retrieving requests: ", err);
-          return reply.view('error', {
-            error: databaseError
-          });
-        }
-        var userData = [];
-        data.map(function(user) {
-          user.birth_date_formatted = formatDates.fixDate(user.birth_date, 'birthDate');
-          user.time_stamp_formatted = formatDates.fixDate(user.time_stamp, 'timeStamp');
-          userData.push(user);
-        });
-        
-        reply.view('dashboard', { requests: data });
-      });
     }
   }
 };
-//
-//     reply.view('dashboard',
-//     { requests: [
-//       { given_names: 'Aidan',
-//         family_name: 'Hussain',
-//         email: 'AidanHussain@rhyta.com',
-//         phone_number: '07731154914',
-//         birth_date: '26 June 1992',
-//         street: '53 St Omers Road',
-//         town: 'Hindlip',
-//         postcode: 'WR3 8AS',
-//         accommodation_history:true,
-//         rental_arrearsreport: true,
-//         rental_reference: false,
-//         other_requests: false,
-//         time_stamp: '2017-03-03T14:10:17Z'
-//       },
-//       { given_names: 'Caitlin',
-//         family_name: 'Jones',
-//         email: 'catyjojo17@yahoo.co.uk',
-//         phone_number: '07081725208',
-//         birth_date: '29 November 1996',
-//         street: '45 Canterbury Road',
-//         town: 'Uton',
-//         postcode: 'BB3 6AD',
-//         accommodation_history:true,
-//         rental_arrearsreport: false,
-//         rental_reference: false,
-//         other_requests: 'I am trying to join the point but I can\'t submit the form',
-//         time_stamp: '2017-03-01T09:22:01Z'
-//       },
-//       { given_names: 'Sean',
-//         family_name: 'Webb',
-//         email: 'seanwev94@rhyta.com',
-//         phone_number: '07839215014',
-//         birth_date: '10 October 1994',
-//         street: '15 Cefn Road',
-//         town: 'Farnell',
-//         postcode: 'DD9 5YZ',
-//         accommodation_history:false,
-//         rental_arrearsreport: true,
-//         rental_reference: false,
-//         other_requests: false,
-//         time_stamp: '2017-02-27T11:03:34Z'
-//       }
-//     ]});
-//   }
-// };
