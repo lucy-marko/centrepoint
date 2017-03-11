@@ -21,13 +21,13 @@ module.exports = {
               error: errorHelper.databaseError
             });
           }
-          // var userData = [];
-          // data.map(function(user) {
-          //   user.birth_date_formatted = formatDates.fixDate(user.birth_date, 'birthDate');
-          //   user.time_stamp_formatted = formatDates.fixDate(user.time_stamp, 'timeStamp');
-          //   userData.push(user);
-          // });
-          return reply.view('dashboard', { requests: data });
+          var userData = [];
+          data.map(function(user) {
+            user.birth_date_formatted = formatDates.fixDate(user.birth_date, 'birthDate');
+            user.time_stamp_formatted = formatDates.fixDate(user.time_stamp, 'timeStamp');
+            userData.push(user);
+          });
+          return reply.view('dashboard', { requests: userData });
         });
       } else {
         return reply.view('error', {

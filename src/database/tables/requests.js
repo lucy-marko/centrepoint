@@ -10,8 +10,16 @@ module.exports.insert = (request, user, cb) => {
 };
 
 module.exports.retrieve = (cb) => {
-  dbConn.query('SELECT * FROM requests INNER JOIN users ON users.id = requests.user_id;',
+  dbConn.query('SELECT * FROM requests INNER JOIN users ON requests.user_id = users.user_id ORDER BY active DESC, time_stamp DESC;',
     (error, data) => {
       error ? cb(error) : cb(null, data.rows);
+    });
+};
+
+module.exports.updateStatus = (request, cb) => {
+  console.log(request);
+  dbConn.query('UPDATE requests SET active = ($1) WHERE request_id = ($2);', [request.active, request.id],
+    (error, data) => {
+      error ? cb(error) : cb(null);
     });
 };

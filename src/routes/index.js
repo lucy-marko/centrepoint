@@ -6,6 +6,7 @@ module.exports = [
   './submit.js',
   './admin.js',
   './dashboard.js',
+  './status',
   './logout.js',
   './error.js'
 ].map(require);
