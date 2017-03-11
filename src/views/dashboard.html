@@ -4,24 +4,32 @@
 <div class="container col s12 m10 l10">
        <ul class="collapsible" data-collapsible="accordion">
          <li>
-           <div>
-             <h5 class="row top padding-left">
-               <span class="header__name col s4 m4 l4">Name</span>
-               <span class="header__subject col s4 m4 l4">Subject</span>
-               <span class="header__date col s4 m4 l4">Date</span>
+           <div class="row top padding-left">
+             <h5>
+               <span class="col s3">Status</span>
+               <span class="header__name col s3">Name</span>
+               <span class="header__subject col s3">Subject</span>
+               <span class="header__date col s3">Date</span>
              </h5>
            </div>
          </li>
          {{#each requests}}
-         <li>
+         <li class="request">
            <div class="collapsible-header">
              <div class="row top">
-               <span class="header__name col s4 m4 l4">{{this.given_names}} {{this.family_name}}</span>
-               <span class="header__subject col s4 m4 l4">Information request</span>
-               <span class="header__date col s4 m4 l4">{{this.time_stamp_formatted}}</span>
+               <span class="col s3">
+                   <div class="switch request-switch">
+                     <label>
+                       <input type="checkbox" {{#if this.active}}checked{{/if}}>
+                       <span class="lever"></span>
+                     </label>
+                   </div>
+               </span>
+               <span class="header__name col s3">{{this.given_names}} {{this.family_name}}</span>
+               <span class="header__subject col s3">Information request</span>
+               <span class="header__date col s3">{{this.time_stamp_formatted}}</span>
              </div>
            </div>
-
            <div class="collapsible-body">
              <div class="row">
                <div class="col s2 m2 l2">Birthdate:</div><div class="col s4 m4 l4">{{this.birth_date_formatted}}</div>
@@ -45,6 +53,7 @@
             <div class="row">
               <div class="col s4 m4 l4">Information requested:</div>
             </div>
+            <div class="row">
               {{#if this.rental_history}}
                 <div class="col s8 m8 l8"><i class="tiny material-icons">done</i> Accommodation history</div>
               {{/if}}
@@ -57,9 +66,15 @@
               {{#if this.other_requests}}
                 <div class="col s8 m8 l8"><i class="tiny material-icons">done</i> {{this.other_requests}}</div>
               {{/if}}
+            </div>
+
+            <div class="row">
+              <div class="col s4 m4 l4" data-value="{{this.request_id}}">Request ID: {{this.request_id}}</div>
+            </div>
 
            </div>
          </li>
          {{/each}}
        </ul>
 </div>
+<script src="public/requestSwitch.js"></script>
