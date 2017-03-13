@@ -1,36 +1,20 @@
 # Centrepoint Alumni help
 
-An app to allow former Centrepoint residents access their Centrepoint address history and information that they may require for their new tenancy agreements.
+An app to allow former Centrepoint residents request their Centrepoint housing information, and to allow administrators to view and manage requests.
 
-## Installation instructions
-
-- Clone this repo and `cd` into it
-- Install Postgres ([see here for instructions](https://github.com/dwyl/learn-postgresql))
-- Enter Postgres command line tool (`psql postgres` on Mac)
-- Create database by typing `CREATE DATABASE exresident_requests;`
-- Ask us for the database password
-- Add user 'centrepoint' and assign as the owner of the database:  
-  `CREATE USER centrepoint WITH SUPERUSER PASSWORD 'password-here';`  
-  `ALTER DATABASE exresident_requests OWNER TO centrepoint;`
-- Create a `config.env` file with the following two lines:  
-  `export DB_URL = postgres://centrepoint:password-here@localhost:5432/exresident_requests`
-  `export DB_MAX_CONNECTIONS = 2`   
-- Run `npm install` to install all dependencies
-- Run `npm run build` to build the database
-- Run `npm start` to start the server
-- Navigate to `http://localhost:9443/` in your browser
-
-#### In order to set up an HTTPS server
-- generate a key file for your certificate  ($ openssl genrsa -out key.pem 2048)
-- generate an intermediate file (csr)  ($ openssl req -new -key key.pem -out csr.pem)
-- generate a certificate file, using the key and csr ($ openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem)
-- remove the intermediate csr file
-
-## User stories
+## User stories: ex-resident
 
 **As a** former resident of Centrepoint  
 **I would like** to access Centrepoint alumni network  
 **so that** I can request my former address with a verified ID    
+
+**As a** former resident of Centrepoint  
+**I would like** the app to look similar to The Point  
+**so that** I know that they are both part of the Centrepoint ex-resident network  
+
+**As a** former resident of Centrepoint  
+**I would like** the app to work on both mobile and desktop  
+**so that** access it regardless of whichever platform I have access to  
 
 **As a** former resident of Centrepoint  
 **I would like** to know what type of information I can request  
@@ -57,45 +41,72 @@ An app to allow former Centrepoint residents access their Centrepoint address hi
 **so that** receive the requested information quickly and reliably  
 
 **As a** former resident of Centrepoint  
+**I would like** the app to look simple, and the form data to be easy to input  
+**so that** be confident that I have put in all the data correctly
+
+**As a** former resident of Centrepoint  
 **I would like** to know long it would take for Centrepoint to contact me  
 **so that** I know when I will get my information (and that they will get in touch by phone if there are any questions)  
 
-## Project plan
+**As a** former resident of Centrepoint  
+**I would like** to stay logged in until I log out  
+**so that** I am authenticated with the app when (and only when) I'm using it
 
-### Wednesday
+## User stories: admin
 
-- Design app flow & storyboards
-- Decide on fonts & colours
-- Create README
-- Set up landing & confirmation pages
-- Set up basic back-end
-- Set up Yoti authentication
+**As a** Centrepoint admin  
+**I would like** to access the ex-resident app dashboard  
+**so that** I can view all requests for housing data from ex-residents
 
-### Thursday
+**As a** Centrepoint admin  
+**I would like** to log in to Yoti quickly and easily  
+**so that** I am authenticated with Centrepoint
 
-- Set up housing data page
-- Set up thank you page
-- Styling and animations
+**As a** Centrepoint admin  
+**I would like** to make sure that only administrators can view the dashboard  
+**so that** ex-residents data is not revealed to external visitors
 
-### Friday
+**As a** Centrepoint admin  
+**I would like** to see a list of all data requests from ex-residents  
+**so that** I know what requests have been made and need my attention
 
-- Set up back-end for remaining pages
-- Styling and animations
-- Prepare for demo & presentation
+**As a** Centrepoint admin  
+**I would like** to see which data requests from ex-residents are open and which closed  
+**so that** I know which requests to focus on
 
-## App flow
+**As a** Centrepoint admin  
+**I would like** to see when each of the requests was made  
+**so that** I know which requests to give priority to
 
-<img src="./wireframes/app-flow.png" width="400"/>
+**As a** Centrepoint admin  
+**I would like** to be able to change a request status from open to closed once I have processed it  
+**so that** I know that it doesn't need my attention any more
 
-## Ex-resident app wireframes
+**As a** Centrepoint admin  
+**I would like** to be able to filter requests based on whether they are open or closed  
+**so that** I can see a list of all requests I am interested in more clearly
 
-<img src="./wireframes/wireframes-12.JPG" width="400"/>
-<img src="./wireframes/wireframes-34.JPG" width="300"/>
+**As a** Centrepoint admin  
+**I would like** to stay logged in until I log out  
+**so that** I am authenticated with the dashboard when (and only when) I'm using it
 
-## Admin dashboard wireframes
+**As a** Centrepoint admin  
+**I would like** to be able to add admin privileges to colleagues at Centrepoint  
+**so that** they can view and work on requests from the dashboard as well
+
+## Wireframes: ex-resident app
+
+<img src="./wireframes/wireframes-12.JPG" height="400"/>
+<img src="./wireframes/wireframes-34.JPG" height="400"/>
+
+## Wireframes: admin dashboard
 
 <img src="./wireframes/Dashboard.png" width="500"/>
 <img src="./wireframes/Dashboard-open-req.png" width="500"/>
+
+## App flow
+
+<img src="./wireframes/app-flow.png" width="450"/>
 
 ## Database schema
 
@@ -120,11 +131,39 @@ Fonts and colours were taken to match those at https://centrepoint.org.uk
 
 ## Technical decisions
 
-### Platform
-- Mobile-first web app to ensure wide access
+### Platform: ex-resident app
+- Mobile-first web app
 - Should be able to work well on older smartphones with smaller screens
 
-### Tech stack - currently implemented
+### Platform: admin dashboard
+- Desktop web app
+- Office use friendly
+
+### Tech stack
 - Front-end: HTML, CSS, Materialize, JavaScript (jQuery)
-- Back-end: Node.js, Hapi.js
+- Back-end: Node.js, Hapi.js, Handlebars, Postgres
 - Authentication: Yoti
+
+## Installation instructions
+
+- Clone this repo and `cd` into it
+- Install Postgres ([see here for instructions](https://github.com/dwyl/learn-postgresql))
+- Enter Postgres command line tool (`psql postgres` on Mac)
+- Create database by typing `CREATE DATABASE exresident_requests;`
+- Ask us for the database password
+- Add user 'centrepoint' and assign as the owner of the database:  
+  `CREATE USER centrepoint WITH SUPERUSER PASSWORD 'password-here';`  
+  `ALTER DATABASE exresident_requests OWNER TO centrepoint;`
+- Create a `config.env` file with the following two lines:  
+  `export DB_URL = postgres://centrepoint:password-here@localhost:5432/exresident_requests`
+  `export DB_MAX_CONNECTIONS = 2`   
+- Run `npm install` to install all dependencies
+- Run `npm run build` to build the database
+- Run `npm start` to start the server
+- Navigate to `http://localhost:9443/` in your browser
+
+#### In order to set up an HTTPS server
+- generate a key file for your certificate  ($ openssl genrsa -out key.pem 2048)
+- generate an intermediate file (csr)  ($ openssl req -new -key key.pem -out csr.pem)
+- generate a certificate file, using the key and csr ($ openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem)
+- remove the intermediate csr file
