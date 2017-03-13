@@ -85,7 +85,7 @@ An app to allow former Centrepoint residents access their Centrepoint address hi
 
 ## App flow
 
-<img src="./wireframes/app-flow.png" width="400"/>
+<img src="./wireframes/app-flow.png" width="450"/>
 
 ## Ex-resident app wireframes
 
