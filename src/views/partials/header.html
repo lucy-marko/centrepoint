@@ -3,5 +3,10 @@
     <ul id="nav-mobile" class="left">
       <li><img class="responsive-image centrepoint-img" src="https://centrepoint.org.uk/media/1001/logo-centrepoint.png" alt="centrepoint-logo" /></li>
     </ul>
+    {{#unless this.landing}}
+    <ul id="nav-mobile" class="right">
+      <li><a class="black-text" id="logout" href="/logout">LOGOUT</a></li>
+    </ul>
+    {{/unless}}
   </div>
 </nav>
