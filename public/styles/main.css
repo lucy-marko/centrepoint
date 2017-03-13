@@ -11,7 +11,7 @@ body {
   font-size: 22px;
 }
 
-.info-check, .other {
+.info-check, .other, .new-admin, .go-back {
   margin-left: 10px;
 }
 
