@@ -1,5 +1,7 @@
 module.exports.formatMobile = function (user) {
-  var newUser = Object.assign({}, user);
-  newUser.localNumber = `0${user.phoneNumber.slice(3)}`;
+  let newUser = Object.assign({}, user);
+  let numStr = `0${user.phoneNumber.slice(2)}`;
+  number = numStr.replace(/\s+/g, '');
+  newUser.localNumber = number;
   return newUser;
 }
