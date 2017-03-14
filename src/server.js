@@ -3,8 +3,6 @@
 const hapi = require('hapi');
 const fs = require('fs');
 const path = require('path');
-const env = require('env2');
-env('./config.env');
 
 const inert = require('inert');
 const vision = require('vision');
