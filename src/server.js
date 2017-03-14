@@ -3,6 +3,9 @@
 const hapi = require('hapi');
 const fs = require('fs');
 const path = require('path');
+const env = require('env2');
+env('./config.env');
+
 const inert = require('inert');
 const vision = require('vision');
 const handlebars = require('handlebars');
@@ -39,7 +42,7 @@ server.register([inert, vision, CookieAuth], (err) => {
 const options = {
     password: 'D8M8#7PqdkRbb}/=NhvG#(B&/tA6v:unC2S',
     cookie: 'yoti-cookie',
-    isSecure: false,
+    isSecure: process.env.NODE_ENV === 'PRODUCTION',
     ttl: 24 * 60 * 60 * 1000
 };
 
