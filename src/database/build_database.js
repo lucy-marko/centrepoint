@@ -1,4 +1,6 @@
 const fs = require('fs');
+const env = require('env2');
+env('./config.env');
 
 const dbConn = require('./connection');
 
