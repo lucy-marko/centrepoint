@@ -11,18 +11,23 @@ const vision = require('vision');
 const handlebars = require('handlebars');
 const CookieAuth = require('hapi-auth-cookie');
 const routes = require('./routes/index.js');
+const deployStatus = process.env.NODE_ENV === 'PRODUCTION';
 
 const server = new hapi.Server();
 
-const tls = {
-  key: fs.readFileSync(path.join(__dirname, '../keys/key.pem')),
-  cert: fs.readFileSync(path.join(__dirname, '../keys/cert.pem'))
-};
-
-server.connection ({
-  port: process.env.PORT || 9443,
-  tls: tls
-});
+if (deployStatus) {
+  server.connection ({
+    port: process.env.PORT
+  });
+} else {
+  server.connection ({
+    port: 9443,
+    tls: {
+      key: fs.readFileSync(path.join(__dirname, '../keys_tls/key.pem')),
+      cert: fs.readFileSync(path.join(__dirname, '../keys_tls/cert.pem'))
+    }
+  });
+}
 
 server.register([inert, vision, CookieAuth], (err) => {
   if (err) throw err;
@@ -35,14 +40,14 @@ server.register([inert, vision, CookieAuth], (err) => {
     layout: 'default',
     partialsPath: 'src/views/partials'
   });
-  server.auth.strategy('base', 'cookie', options)
+  server.auth.strategy('base', 'cookie', options);
   server.route(routes);
 });
 
 const options = {
     password: 'D8M8#7PqdkRbb}/=NhvG#(B&/tA6v:unC2S',
     cookie: 'yoti-cookie',
-    isSecure: process.env.NODE_ENV === 'PRODUCTION',
+    isSecure: deployStatus,
     ttl: 24 * 60 * 60 * 1000
 };
 

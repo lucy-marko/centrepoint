@@ -2,5 +2,6 @@
 .DS_Store
 node_modules
 config.env
-keys
+keys_tls
+keys_pem
 /src/database/build_database.sql
