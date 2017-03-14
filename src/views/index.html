@@ -1,4 +1,47 @@
 {{!< layout/default}}
 {{> header}}
-{{> welcome}}
-{{> login}}
+
+<div class="container center">
+    <div class="row">
+        <div class="col s12">
+              <h4 id="welcome">WELCOME</h4>
+              <div class="divider"></div>
+              <p>You can use this app to request information from when you were at Centrepoint</p>
+                <ul class="left-align" id="info-list">
+                    <li><i class="tiny material-icons padding-right">done</i> Address history</li>
+                    <li><i class="tiny material-icons padding-right">done</i> Rent arrears report</li>
+                    <li><i class="tiny material-icons padding-right">done</i> Rental references</li>
+                </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="divider"></div>
+            <p>Please log in using YOTI so we can check who you are!</p>
+        </div>
+    </div>
+  <div class="row">
+      <div class="col s12">
+          <span
+            data-yoti-application-id="786f5bed-5638-4f40-bc0a-ee65b9f817f9"
+            data-yoti-type="inline"
+            data-yoti-scenario-id="ae8a4de4-0e85-4bfc-baad-1df239e90371"
+            data-size="medium"
+            data-target="embed">
+            LOG IN WITH YOTI
+          </span>
+      </div>
+  </div>
+  <div class="row">
+    <div class="section">
+
+    </div>
+      <div class="col s12 hide-on-med-and-down">
+          <p class="admin-message"><b>Centrepoint administrators</b><br>Please log-in using Yoti above</p>
+      </div>
+  </div>
+</div>
+<script>
+    _ybg.config.service = 'https://www.yoti.com/connect/'
+    _ybg.init()
+</script>

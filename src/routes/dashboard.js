@@ -2,6 +2,7 @@ const authMiddleware = require('../helpers/authMiddleware.js')
 const requestTable = require('../database/tables/requests.js')
 const formatDates = require('../helpers/dateHelper.js');
 const errorHelper = require('../helpers/errorHelper.js');
+const dateHelper = require('../helpers/dateHelper.js')
 
 module.exports = {
   method: 'GET',
@@ -15,19 +16,14 @@ module.exports = {
     ],
     handler: (req, reply) => {
       if (req.pre.user.admin === true) {
-        requestTable.retrieve(function (err, data) {
+        requestTable.retrieve(function (err, dashboardData) {
           if (err) {
             return reply.view('error', {
               error: errorHelper.databaseError
             });
           }
-          var userData = [];
-          data.map(function(user) {
-            user.birth_date_formatted = formatDates.fixDate(user.birth_date, 'birthDate');
-            user.time_stamp_formatted = formatDates.fixDate(user.time_stamp, 'timeStamp');
-            userData.push(user);
-          });
-          return reply.view('dashboard', { requests: userData });
+          let formattedData = formatDates.fixDate(dashboardData);
+          return reply.view('dashboard', { requests: formattedData });
         });
       } else {
         return reply.view('error', {

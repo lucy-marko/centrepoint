@@ -4,7 +4,6 @@ module.exports = [
   './login.js',
   './info.js',
   './submit.js',
-  './admin.js',
   './new-admin.js',
   './submit-admin',
   './dashboard.js',
