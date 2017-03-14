@@ -2,7 +2,7 @@ const dbConn = require('../connection');
 
 module.exports.insert = (user, cb) => {
   dbConn.query('INSERT INTO users (user_id, given_names, family_name, birth_date, phone_number) VALUES ($1, $2, $3, $4, $5);',
-    [user.id, user.givenNames, user.familyName, user.dateOfBirth, user.phoneNumber], (error, data) => {
+    [user.id, user.givenNames, user.familyName, user.dateOfBirth, user.localNumber], (error, data) => {
       error ? cb(error) : cb(null);
     });
 };
@@ -14,8 +14,9 @@ module.exports.queryUserId = (user, cb) => {
 };
 
 module.exports.updateAdmin = (user, cb) => {
-  dbConn.query('UPDATE users SET admin = true WHERE given_names = ($1) AND family_name = ($2);', [user.givenNames, user.familyName],
+  console.log(user);
+  dbConn.query('UPDATE users SET admin = true WHERE given_names = ($1) AND family_name = ($2) AND phone_number = ($3);', [user.givenNames, user.familyName, user.localNumber],
     (error, data) => {
-      error ? cb(error) : cb(null);
+      error ? cb(error) : cb(null, data);
     });
 };
