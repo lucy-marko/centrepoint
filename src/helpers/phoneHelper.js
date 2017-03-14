@@ -6,5 +6,6 @@ module.exports.formatMobile = function (user) {
   }
   number = numStr.replace(/\s+/g, '');
   newUser.localNumber = number;
+  console.log(newUser);
   return newUser;
 }

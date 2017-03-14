@@ -4,10 +4,11 @@
             <h4 class="center-align" id="welcome">WELCOME</h4>
             <div class="divider"></div>
             <h5 class="center-align">Please type in the name of the new admininstrator below</h5>
+            {{#if error}}
+            <p class="center-align">{{error}}</p>
+            {{/if}}
             {{#if success}}
             <p class="center-align">{{success}}</p>
-            {{else}}
-            <p class="center-align">{{error}}</p>
             {{/if}}
             <form action="/submit-admin" method="post">
             <div class="container">

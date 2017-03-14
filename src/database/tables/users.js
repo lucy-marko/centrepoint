@@ -14,8 +14,9 @@ module.exports.queryUserId = (user, cb) => {
 };
 
 module.exports.updateAdmin = (user, cb) => {
-  dbConn.query('UPDATE users SET admin = true WHERE given_names = ($1) AND family_name = ($2) AND phone_number = ($3);', [user.givenNames, user.familyName, user.phoneNumber],
+  console.log(user);
+  dbConn.query('UPDATE users SET admin = true WHERE given_names = ($1) AND family_name = ($2) AND phone_number = ($3);', [user.givenNames, user.familyName, user.localNumber],
     (error, data) => {
-      error ? cb(error) : cb(null);
+      error ? cb(error) : cb(null, data);
     });
 };
