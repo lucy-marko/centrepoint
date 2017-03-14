@@ -13,19 +13,9 @@ const deployStatus = process.env.NODE_ENV === 'PRODUCTION';
 
 const server = new hapi.Server();
 
-if (deployStatus) {
   server.connection ({
     port: process.env.PORT
   });
-} else {
-  server.connection ({
-    port: 9443,
-    tls: {
-      key: fs.readFileSync(path.join(__dirname, '../keys_tls/key.pem')),
-      cert: fs.readFileSync(path.join(__dirname, '../keys_tls/cert.pem'))
-    }
-  });
-};
 
 server.register([inert, vision, CookieAuth], (err) => {
   if (err) throw err;
