@@ -6,7 +6,7 @@ env('./config.env');
 const YotiClient = require('yoti-node-sdk');
 const CLIENT_SDK_ID = process.env.SDK;
 // local only
-const PEM = fs.readFileSync(path.join(__dirname, '../../keys_pem/help-access-security.pem'));
+const PEM = fs.readFileSync(path.join(__dirname, '../../key_pem/help-access-security.pem'));
 const yotiClient = new YotiClient(CLIENT_SDK_ID, PEM);
 
 const userTable = require('../database/tables/users');
