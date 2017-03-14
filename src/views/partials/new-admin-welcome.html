@@ -12,26 +12,28 @@
             <form action="/submit-admin" method="post">
             <div class="container">
               <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s6 offset-s3">
                   <input name="givenNames" id="given_names" type="text" class="validate">
                   <label class="left-align" for="first_name">Given Names</label>
                 </div>
-                <div class="input-field col s6">
+              </div>
+              <div class="row">
+                <div class="line-height input-field col s6 offset-s3">
                   <input name="familyName" id="family_name" type="text" class="validate">
                   <label for="last_name">Family Name</label>
                 </div>
               </div>
               <div class="row">
-                <div class="input-field col s6">
+                <div class="line-height input-field col s6 offset-s3">
                   <input name="phoneNumber" id="phone_number" type="text" class="validate">
                   <label for="phone_number">Mobile number</label>
                 </div>
               </div>
-            </div>
-            <div class="center-align submit-btn">
-              <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                <i class="material-icons right">send</i>
-              </button>
+              <div class="center-align submit-btn">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
             </div>
           </form>
           <div class="return right-align">
