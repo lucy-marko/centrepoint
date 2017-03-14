@@ -27,7 +27,7 @@ if (deployStatus) {
       cert: fs.readFileSync(path.join(__dirname, '../keys_tls/cert.pem'))
     }
   });
-}
+};
 
 server.register([inert, vision, CookieAuth], (err) => {
   if (err) throw err;
