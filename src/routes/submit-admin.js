@@ -14,9 +14,9 @@ module.exports = {
         { method: authMiddleware, assign: 'user' }
     ],
     handler: (req, reply) => {
-      caseHelper.allCaps(req.payload);
+      let newUser = caseHelper.allCaps(req.payload);
       let result = {};
-      userTable.updateAdmin(req.payload, (err) => {
+      userTable.updateAdmin(newUser, (err) => {
         if(err) {
           result.error = 'We could not add this user as an admin, please try again';
           console.log(result.error)
