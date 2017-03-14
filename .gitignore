@@ -3,5 +3,5 @@
 node_modules
 config.env
 keys_tls
-key_pem
+keys_pem
 /src/database/build_database.sql
