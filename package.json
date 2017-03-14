@@ -2,7 +2,7 @@
   "name": "centrepoint",
   "version": "1.0.0",
   "description": "An app to allow former Centrepoint residents access their Centrepoint address history and information that they may require for their new tenancy agreements.",
-  "main": "index.js",
+  "main": "src/start.js",
   "scripts": {
     "start": "node src/start.js",
     "test": "tape 'test/**/*.js'",
