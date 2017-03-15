@@ -13,9 +13,9 @@ const deployStatus = process.env.NODE_ENV === 'PRODUCTION';
 
 const server = new hapi.Server();
 
-  server.connection ({
-    port: process.env.PORT || 9443
-  });
+server.connection ({
+  port: process.env.PORT || 9443
+});
 
 server.register([inert, vision, CookieAuth], (err) => {
   if (err) throw err;
