@@ -10,7 +10,6 @@
     }
 }
 
-
 @media (min-width: 700px) {
     html {
       font-size: 110%;
@@ -55,8 +54,12 @@ body {
   margin-top: 20px;
 }
 
-#welcome, #welcome2 {
+#welcome {
   margin-top: 15px;
+}
+
+#welcome2 {
+  margin-top: 25px;
 }
 
 #info-list {
