@@ -1,4 +1,4 @@
-## User testing
+## User testing: ex-resident
 
 ### Conducting the tests
 
