@@ -4,3 +4,4 @@ config.env
 keys_tls
 keys_pem
 /src/database/build_database.sql
+/keys

@@ -28,10 +28,8 @@ We’d like you to imagine that you have received an email saying that a new req
 - Identify where people are confused
 
 #### After completion - admin
-- Were you able to log in and view the dashboard?
-- Were you able to open specific requests and view the contents?
-- Were you able to close requests and open others?
-- Were you able to mark requests as completed and vice versa?
+- Were you able to complete the tasks?
+- Was there anything that seemed confusing?
 - What were the best and worst things about the app?
 - Was there anything that you think is missing or incomplete?
 - Any thoughts, feelings or other feedback not covered?
