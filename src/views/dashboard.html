@@ -17,7 +17,7 @@
          <li class="request">
            <div class="collapsible-header">
              <div class="row top">
-               <span class="header__status col s3">{{this.active}}</span>
+               <span class="header__status col s3"><div class="{{this.active}}" id="status-icon"></div>{{this.activeCap}}</span>
                <span class="header__assignee col s3">{{this.admin_names}} {{this.admin_family}}</span>
                <span class="header__name col s3">{{this.given_names}} {{this.family_name}}</span>
                <span class="header__date col s3">{{this.time_stamp_formatted}}</span>

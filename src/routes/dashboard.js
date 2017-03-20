@@ -27,7 +27,7 @@ module.exports = {
           }
           let dashboardDataDate = formatDates.fixDate(dashboardData);
           let formattedDashData = dashboardDataDate.map(function(request) {
-            request.active = requestHelper.formatStatus(request.active);
+            request.activeCap = requestHelper.formatStatus(request.active);
             if (request.admin_names) {
               request.admin_names = userHelper.getFirstName(request.admin_names);
               request.admin_family = userHelper.getLastName(request.admin_family);
