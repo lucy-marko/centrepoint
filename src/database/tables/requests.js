@@ -10,7 +10,9 @@ module.exports.insert = (request, user, cb) => {
 };
 
 module.exports.retrieve = (cb) => {
-  dbConn.query('SELECT * FROM requests INNER JOIN users ON requests.user_id = users.user_id ORDER BY active DESC, time_stamp DESC;',
+  let requestsUsersJoin = `(SELECT * FROM requests INNER JOIN users ON requests.user_id = users.user_id) AS join1`;
+  let requestsAdminJoin = `(SELECT request_id, given_names AS admin_names, family_name AS admin_family FROM requests LEFT JOIN users ON requests.assigned_user_id = users.user_id) AS join2`;
+  dbConn.query(`SELECT * FROM ${requestsUsersJoin} INNER JOIN ${requestsAdminJoin} ON join1.request_id = join2.request_id ORDER BY active DESC, time_stamp DESC;`,
     (error, data) => {
       error ? cb(error) : cb(null, data.rows);
     });

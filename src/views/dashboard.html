@@ -63,6 +63,8 @@
               <div class="requestId col s4 m4 l4" data-value="{{this.request_id}}">Request ID: {{this.request_id}}</div>
             </div>
 
+            <div class="section">
+
             <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}'>Assign request</a>
             <ul id='dropdown{{this.request_id}}' class='dropdown-content'>
               {{#each ../admins}}
@@ -74,6 +76,14 @@
               <li><a href="#!">one</a></li>
               <li><a href="#!">two</a></li>
             </ul>
+
+            </div>
+
+            {{#if this.assigned_user_id}}
+            <div class="row">
+              <div class="col s4 m4 l4">Assigned to: {{this.admin_names}} {{this.admin_family}}</div>
+            </div>
+            {{/if}}
 
            </div>
          </li>

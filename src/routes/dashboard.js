@@ -24,7 +24,14 @@ module.exports = {
               error: errorHelper.databaseError
             });
           }
-          formattedDashData = formatDates.fixDate(dashboardData);
+          let dashboardDataDate = formatDates.fixDate(dashboardData);
+          let formattedDashData = dashboardDataDate.map(function(request) {
+            if (request.admin_names) {
+              request.admin_names = userHelper.getFirstName(request.admin_names);
+              request.admin_family = userHelper.getLastName(request.admin_family);
+            }
+            return request;
+          });
           userTable.retrieveAdmins(function (err, adminData) {
             if (err) {
               return reply.view('error', {
