@@ -2,6 +2,7 @@ const authMiddleware = require('../helpers/authMiddleware.js');
 const requestTable = require('../database/tables/requests.js');
 const userTable = require('../database/tables/users.js');
 const userHelper = require('../helpers/userHelper.js');
+const requestHelper = require('../helpers/requestHelper.js');
 const formatDates = require('../helpers/dateHelper.js');
 const errorHelper = require('../helpers/errorHelper.js');
 const dateHelper = require('../helpers/dateHelper.js');
@@ -26,6 +27,7 @@ module.exports = {
           }
           let dashboardDataDate = formatDates.fixDate(dashboardData);
           let formattedDashData = dashboardDataDate.map(function(request) {
+            request.active = requestHelper.formatStatus(request.active);
             if (request.admin_names) {
               request.admin_names = userHelper.getFirstName(request.admin_names);
               request.admin_family = userHelper.getLastName(request.admin_family);

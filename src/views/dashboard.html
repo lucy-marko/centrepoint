@@ -73,10 +73,12 @@
               <li class="divider"></li>
               <li><a href="/assign?id={{this.request_id}}&admin=clear">Clear assigned user</a></li>
             </ul>
-            <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}b'>Close request</a>
+
+            <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}b'>Change status</a>
             <ul id='dropdown{{this.request_id}}b' class='dropdown-content'>
-              <li><a href="#!">one</a></li>
-              <li><a href="#!">two</a></li>
+              <li><a href="/status?id={{this.request_id}}&active=open">Open</a></li>
+              <li><a href="/status?id={{this.request_id}}&active=progress">In progress</a></li>
+              <li><a href="/status?id={{this.request_id}}&active=closed">Closed</a></li>
             </ul>
 
             </div>
