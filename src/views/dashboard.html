@@ -1,14 +1,13 @@
 {{!< layout/default}}
 {{> header-admin}}
 
-<div class="container col s12 m10 l10">
+<div class="container col s12 m10 l8">
        <ul class="collapsible" data-collapsible="accordion">
          <li>
            <div class="row top padding-left">
              <h5>
                <span class="col s3">Status</span>
                <span class="header__name col s3">Name</span>
-               <span class="header__subject col s3">Subject</span>
                <span class="header__date col s3">Date</span>
              </h5>
            </div>
@@ -17,16 +16,8 @@
          <li class="request">
            <div class="collapsible-header">
              <div class="row top">
-               <span class="col s3">
-                   <div class="switch request-switch">
-                     <label class="label">
-                       <input type="checkbox" {{#if this.active}}checked{{/if}}>
-                       <span class="lever"></span>
-                     </label>
-                   </div>
-               </span>
+               <span class="header__status col s3">{{this.active}}</span>
                <span class="header__name col s3">{{this.given_names}} {{this.family_name}}</span>
-               <span class="header__subject col s3">Information request</span>
                <span class="header__date col s3">{{this.time_stamp_formatted}}</span>
              </div>
            </div>
@@ -71,6 +62,18 @@
             <div class="row">
               <div class="requestId col s4 m4 l4" data-value="{{this.request_id}}">Request ID: {{this.request_id}}</div>
             </div>
+
+            <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}'>Assign request</a>
+            <ul id='dropdown{{this.request_id}}' class='dropdown-content'>
+              <li><a href="#!">one</a></li>
+              <li><a href="#!">two</a></li>
+            </ul>
+
+            <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}b'>Close request</a>
+            <ul id='dropdown{{this.request_id}}b' class='dropdown-content'>
+              <li><a href="#!">one</a></li>
+              <li><a href="#!">two</a></li>
+            </ul>
 
            </div>
          </li>
