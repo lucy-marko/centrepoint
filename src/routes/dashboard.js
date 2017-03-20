@@ -1,8 +1,9 @@
-const authMiddleware = require('../helpers/authMiddleware.js')
-const requestTable = require('../database/tables/requests.js')
+const authMiddleware = require('../helpers/authMiddleware.js');
+const requestTable = require('../database/tables/requests.js');
+const userTable = require('../database/tables/users.js')
 const formatDates = require('../helpers/dateHelper.js');
 const errorHelper = require('../helpers/errorHelper.js');
-const dateHelper = require('../helpers/dateHelper.js')
+const dateHelper = require('../helpers/dateHelper.js');
 
 module.exports = {
   method: 'GET',
@@ -22,8 +23,18 @@ module.exports = {
               error: errorHelper.databaseError
             });
           }
-          let formattedData = formatDates.fixDate(dashboardData);
-          return reply.view('dashboard', { requests: formattedData });
+          formattedData = formatDates.fixDate(dashboardData);
+          userTable.retrieveAdmins(function (err, adminData) {
+            if (err) {
+              return reply.view('error', {
+                error: errorHelper.databaseError
+              });
+            }
+            return reply.view('dashboard', {
+              requests: formattedData,
+              admins: adminData
+            });
+          });
         });
       } else {
         return reply.view('error', {

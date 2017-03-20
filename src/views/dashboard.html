@@ -1,6 +1,9 @@
 {{!< layout/default}}
 {{> header-admin}}
 
+{{#each admins}}
+{{this.given_names}}
+{{/each}}
 <div class="container col s12 m10 l8">
        <ul class="collapsible" data-collapsible="accordion">
          <li>
@@ -65,10 +68,10 @@
 
             <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}'>Assign request</a>
             <ul id='dropdown{{this.request_id}}' class='dropdown-content'>
-              <li><a href="#!">one</a></li>
-              <li><a href="#!">two</a></li>
+              {{#each admins}}
+              <li><a href="#!">hello</a></li>
+              {{/each}}
             </ul>
-
             <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}b'>Close request</a>
             <ul id='dropdown{{this.request_id}}b' class='dropdown-content'>
               <li><a href="#!">one</a></li>
@@ -85,3 +88,4 @@
 </div>
 <script src="public/requestSwitch.js"></script>
 <script src="public/newAdmin.js"></script>
+<script src="public/dashboardDropdown.js"></script>
