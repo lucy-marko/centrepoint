@@ -7,6 +7,7 @@
            <div class="row top padding-left">
              <h5>
                <span class="col s3">Status</span>
+               <span class="col s3">Assignee</span>
                <span class="header__name col s3">Name</span>
                <span class="header__date col s3">Date</span>
              </h5>
@@ -17,6 +18,7 @@
            <div class="collapsible-header">
              <div class="row top">
                <span class="header__status col s3">{{this.active}}</span>
+               <span class="header__assignee col s3">{{this.admin_names}} {{this.admin_family}}</span>
                <span class="header__name col s3">{{this.given_names}} {{this.family_name}}</span>
                <span class="header__date col s3">{{this.time_stamp_formatted}}</span>
              </div>
@@ -82,12 +84,6 @@
             </ul>
 
             </div>
-
-            {{#if this.assigned_user_id}}
-            <div class="row">
-              <div class="col s4 m4 l4">Assigned to: {{this.admin_names}} {{this.admin_family}}</div>
-            </div>
-            {{/if}}
 
            </div>
          </li>
