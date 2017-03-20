@@ -68,7 +68,7 @@
             <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}'>Assign request</a>
             <ul id='dropdown{{this.request_id}}' class='dropdown-content'>
               {{#each ../admins}}
-              <li><a href="#!">{{this.firstName}} {{this.lastName}}</a></li>
+              <li><a href="/assign?id={{../this.request_id}}&admin={{this.id}}">{{this.firstName}} {{this.lastName}}</a></li>
               {{/each}}
             </ul>
             <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}b'>Close request</a>

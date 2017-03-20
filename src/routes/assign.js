@@ -4,7 +4,7 @@ const errorHelper = require('../helpers/errorHelper.js');
 
 module.exports = {
   method: 'GET',
-  path:'/status',
+  path:'/assign',
   config: {
     auth: {
       strategy: 'base'
@@ -15,9 +15,9 @@ module.exports = {
     handler: (req, reply) => {
       let request = {
         id: req.query.id,
-        active: req.query.active
+        admin: req.query.admin
       };
-      requestTable.updateStatus(request, function (err, data) {
+      requestTable.updateAssigned(request, function (err, data) {
         if (err) {
           return reply.view('error', {
             error: errorHelper.databaseError

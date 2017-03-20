@@ -25,3 +25,11 @@ module.exports.updateStatus = (request, cb) => {
       error ? cb(error) : cb(null);
     });
 };
+
+module.exports.updateAssigned = (request, cb) => {
+  console.log(request);
+  dbConn.query('UPDATE requests SET assigned_user_id = ($1) WHERE request_id = ($2);', [request.admin, request.id],
+    (error, data) => {
+      error ? cb(error) : cb(null);
+    });
+};

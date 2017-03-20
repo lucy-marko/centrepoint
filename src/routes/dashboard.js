@@ -41,7 +41,8 @@ module.exports = {
             let formattedAdminData = adminData.map(function(admin) {
               return {
                 firstName: userHelper.getFirstName(admin.given_names),
-                lastName: userHelper.getLastName(admin.family_name)
+                lastName: userHelper.getLastName(admin.family_name),
+                id: admin.user_id
               }
             });
             return reply.view('dashboard', {
