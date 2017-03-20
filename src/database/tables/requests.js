@@ -19,7 +19,6 @@ module.exports.retrieve = (cb) => {
 };
 
 module.exports.updateStatus = (request, cb) => {
-  console.log(request);
   dbConn.query('UPDATE requests SET active = ($1) WHERE request_id = ($2);', [request.active, request.id],
     (error, data) => {
       error ? cb(error) : cb(null);
@@ -27,8 +26,7 @@ module.exports.updateStatus = (request, cb) => {
 };
 
 module.exports.updateAssigned = (request, cb) => {
-  console.log(request);
-  dbConn.query('UPDATE requests SET assigned_user_id = ($1) WHERE request_id = ($2);', [request.admin, request.id],
+  dbConn.query('UPDATE requests SET assigned_user_id = ($1) WHERE request_id = ($2);', [request.admin === 'clear' ? null : request.admin, request.id],
     (error, data) => {
       error ? cb(error) : cb(null);
     });
