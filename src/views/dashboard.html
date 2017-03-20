@@ -67,6 +67,13 @@
 
             <div class="section">
 
+            <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}b'>Change status</a>
+            <ul id='dropdown{{this.request_id}}b' class='dropdown-content'>
+              <li><a href="/status?id={{this.request_id}}&active=open">Open</a></li>
+              <li><a href="/status?id={{this.request_id}}&active=progress">In progress</a></li>
+              <li><a href="/status?id={{this.request_id}}&active=closed">Closed</a></li>
+            </ul>
+
             <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}'>Assign request</a>
             <ul id='dropdown{{this.request_id}}' class='dropdown-content'>
               {{#each ../admins}}
@@ -74,13 +81,6 @@
               {{/each}}
               <li class="divider"></li>
               <li><a href="/assign?id={{this.request_id}}&admin=clear">Clear assigned user</a></li>
-            </ul>
-
-            <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}b'>Change status</a>
-            <ul id='dropdown{{this.request_id}}b' class='dropdown-content'>
-              <li><a href="/status?id={{this.request_id}}&active=open">Open</a></li>
-              <li><a href="/status?id={{this.request_id}}&active=progress">In progress</a></li>
-              <li><a href="/status?id={{this.request_id}}&active=closed">Closed</a></li>
             </ul>
 
             </div>
