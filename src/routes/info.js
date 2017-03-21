@@ -12,7 +12,7 @@ module.exports = {
         { method: authMiddleware, assign: 'user' }
     ],
     handler: (req, reply) => {
-      let firstName = userHelper.getFirstName(req.pre.user);
+      let firstName = userHelper.getFirstName(req.pre.user.givenNames);
       return reply.view('info', { firstName });
     }
   }

@@ -135,3 +135,25 @@ h5 {
   margin: 10px 0px;
   width: 80px;
 }
+
+#status-icon {
+  margin: 0;
+  padding: 0;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.open {
+  background-color: rgb(38,166,154);
+}
+
+.closed {
+  background-color: rgb(244,67,54);
+}
+
+.progress {
+  background-color: rgb(255,209,65);
+}

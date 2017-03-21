@@ -7,7 +7,8 @@ module.exports = [
   './new-admin.js',
   './submit-admin',
   './dashboard.js',
-  './status',
+  './status.js',
+  './assign.js',
   './logout.js',
   './error.js'
 ].map(require);

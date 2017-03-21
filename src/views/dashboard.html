@@ -1,14 +1,14 @@
 {{!< layout/default}}
 {{> header-admin}}
 
-<div class="container col s12 m10 l10">
+<div class="container col s12 m10 l8">
        <ul class="collapsible" data-collapsible="accordion">
          <li>
            <div class="row top padding-left">
              <h5>
                <span class="col s3">Status</span>
+               <span class="col s3">Assignee</span>
                <span class="header__name col s3">Name</span>
-               <span class="header__subject col s3">Subject</span>
                <span class="header__date col s3">Date</span>
              </h5>
            </div>
@@ -17,16 +17,9 @@
          <li class="request">
            <div class="collapsible-header">
              <div class="row top">
-               <span class="col s3">
-                   <div class="switch request-switch">
-                     <label class="label">
-                       <input type="checkbox" {{#if this.active}}checked{{/if}}>
-                       <span class="lever"></span>
-                     </label>
-                   </div>
-               </span>
+               <span class="header__status col s3"><div class="{{this.active}}" id="status-icon"></div>{{this.activeCap}}</span>
+               <span class="header__assignee col s3">{{this.admin_names}} {{this.admin_family}}</span>
                <span class="header__name col s3">{{this.given_names}} {{this.family_name}}</span>
-               <span class="header__subject col s3">Information request</span>
                <span class="header__date col s3">{{this.time_stamp_formatted}}</span>
              </div>
            </div>
@@ -72,6 +65,26 @@
               <div class="requestId col s4 m4 l4" data-value="{{this.request_id}}">Request ID: {{this.request_id}}</div>
             </div>
 
+            <div class="section">
+
+            <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}b'>Change status</a>
+            <ul id='dropdown{{this.request_id}}b' class='dropdown-content'>
+              <li><a href="/status?id={{this.request_id}}&active=open">Open</a></li>
+              <li><a href="/status?id={{this.request_id}}&active=progress">In progress</a></li>
+              <li><a href="/status?id={{this.request_id}}&active=closed">Closed</a></li>
+            </ul>
+
+            <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}'>Assign request</a>
+            <ul id='dropdown{{this.request_id}}' class='dropdown-content'>
+              {{#each ../admins}}
+              <li><a href="/assign?id={{../this.request_id}}&admin={{this.id}}">{{this.firstName}} {{this.lastName}}</a></li>
+              {{/each}}
+              <li class="divider"></li>
+              <li><a href="/assign?id={{this.request_id}}&admin=clear">Clear assigned user</a></li>
+            </ul>
+
+            </div>
+
            </div>
          </li>
          {{/each}}
@@ -82,3 +95,4 @@
 </div>
 <script src="public/requestSwitch.js"></script>
 <script src="public/newAdmin.js"></script>
+<script src="public/dashboardDropdown.js"></script>
