@@ -146,14 +146,22 @@ h5 {
   margin-right: 1rem;
 }
 
-.open {
+.marker-open {
   background-color: rgb(38,166,154);
 }
 
-.closed {
-  background-color: rgb(244,67,54);
+.marker-closed {
+  background-color: rgb(180,180,180);
 }
 
-.progress {
+.marker-progress {
   background-color: rgb(255,209,65);
+}
+
+.header-open {
+  font-weight: bold;
+}
+
+.text-closed {
+  color: rgb(180,180,180);
 }
