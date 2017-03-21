@@ -1,5 +1,6 @@
 /**
  * as mentioned in other places, i think this function should take `user.phoneNumber` and return `localNumber`
+ * alternatively put this in `userHelper`, as it operates on users
  */
 module.exports.formatMobile = function (user) {
   let newUser = Object.assign({}, user);
