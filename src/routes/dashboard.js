@@ -25,19 +25,17 @@ module.exports = {
               error: errorMessages.databaseError
             });
           }
-          console.log('1 ',dashboardData);
           let formattedDashboardData = dashboardData.map(function (request) {
-            request.birth_date = request.birth_date.toString().slice(0,15);
-            request.time_stamp = request.time_stamp.toString().slice(0,21);
-            request.activeCap = requestHelper.formatStatus(request.active);
-            if (request.admin_names) {
-              request.admin_names = userHelper.getFirstName(request.admin_names);
-              request.admin_family = userHelper.getLastName(request.admin_family);
+            let newRequest = Object.assign({}, request);
+            newRequest.birth_date = newRequest.birth_date.toString().slice(0,15);
+            newRequest.time_stamp = newRequest.time_stamp.toString().slice(0,21);
+            newRequest.activeCap = requestHelper.formatStatus(newRequest.active);
+            if (newRequest.admin_names) {
+              newRequest.admin_names = userHelper.getFirstName(newRequest.admin_names);
+              newRequest.admin_family = userHelper.getLastName(newRequest.admin_family);
             }
-            return request;
+            return newRequest;
           });
-          console.log('2 ',dashboardData);
-          console.log('3 ',formattedDashboardData);
           userTable.retrieveAdmins(function (err, adminData) {
             if (err) {
               return reply.view('error', {
