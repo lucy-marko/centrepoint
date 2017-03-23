@@ -1,6 +1,4 @@
-const authMiddleware = require('../helpers/authMiddleware.js')
-const requestTable = require('../database/tables/requests.js')
-const errorHelper = require('../helpers/errorHelper.js');
+const authMiddleware = require('../helpers/authMiddleware.js');
 
 module.exports = {
   method: 'GET',

@@ -4,7 +4,7 @@ const userTable = require('../database/tables/users.js');
 const userHelper = require('../helpers/userHelper.js');
 const requestHelper = require('../helpers/requestHelper.js');
 const formatDates = require('../helpers/dateHelper.js');
-const errorHelper = require('../helpers/errorHelper.js');
+const errorMessages = require('../constants/errorMessages.js');
 const dateHelper = require('../helpers/dateHelper.js');
 
 module.exports = {
@@ -22,7 +22,7 @@ module.exports = {
         requestTable.retrieve(function (err, dashboardData) {
           if (err) {
             return reply.view('error', {
-              error: errorHelper.databaseError
+              error: errorMessages.databaseError
             });
           }
           let dashboardDataDate = formatDates.fixDate(dashboardData);
@@ -37,7 +37,7 @@ module.exports = {
           userTable.retrieveAdmins(function (err, adminData) {
             if (err) {
               return reply.view('error', {
-                error: errorHelper.databaseError
+                error: errorMessages.databaseError
               });
             }
             let formattedAdminData = adminData.map(function(admin) {
@@ -55,7 +55,7 @@ module.exports = {
         });
       } else {
         return reply.view('error', {
-          error : errorHelper.authenticationError
+          error : errorMessages.authenticationError
         });
       }
     }

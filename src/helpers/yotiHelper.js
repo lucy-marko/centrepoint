@@ -11,7 +11,7 @@ const yotiClient = new YotiClient(CLIENT_SDK_ID, PEM);
 
 const userTable = require('../database/tables/users');
 const userHelper = require('../helpers/userHelper');
-const errorHelper = require('../helpers/errorHelper.js')
+const errorMessages = require('../constants/errorMessages.js');
 
 module.exports = function (token, callback) {
   yotiClient
@@ -20,7 +20,7 @@ module.exports = function (token, callback) {
     let user = userHelper.getUser(activityDetails);
     userTable.queryUserId(user, function (err, userData) {
       if (err) {
-        callback(errorHelper.databaseError);
+        callback(errorMessages.databaseError);
       }
       if (userData) {
         user.exists = true;
@@ -29,6 +29,6 @@ module.exports = function (token, callback) {
       callback(null, user);
     });
   }).catch((err) => {
-    callback(errorHelper.loginError);
+    callback(errorMessages.loginError);
   });
 };
