@@ -12,3 +12,16 @@ module.exports.getFirstName = function (givenNames) {
 module.exports.getLastName = function (familyName) {
   return familyName.slice(0,1).concat(familyName.slice(1).toLowerCase());
 };
+
+module.exports.capitalizeNames = function (user) {
+  let newUser = {};
+  Object.keys(user).forEach(key => {
+    value = user[key];
+    if (typeof value === 'string') {
+      newUser[key] = value.toUpperCase();
+    } else {
+      newUser[key] = value;
+    }
+  })
+  return newUser;
+};

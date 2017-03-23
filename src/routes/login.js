@@ -27,7 +27,8 @@ module.exports = {
         }
         return reply.redirect('/info');
       }
-      let newUser = phoneHelper.formatMobile(user);
+      let newUser = Object.assign({}, user);
+      newUser.localNumber = phoneHelper.formatMoble(user.phoneNumber);
       userTable.insert(newUser, function (err, data) {
         if (err) {
           return reply.view('error', {

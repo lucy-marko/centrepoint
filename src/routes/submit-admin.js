@@ -1,6 +1,6 @@
 const authMiddleware = require('../helpers/authMiddleware.js');
 const userTable = require('../database/tables/users.js');
-const caseHelper = require('../helpers/capsHelper.js');
+const userHelper = require('../helpers/userHelper.js');
 const phoneHelper = require('../helpers/phoneHelper.js');
 
 module.exports = {
@@ -14,10 +14,10 @@ module.exports = {
         { method: authMiddleware, assign: 'user' }
     ],
     handler: (req, reply) => {
-      let newUser = phoneHelper.formatMobile(caseHelper.allCaps(req.payload));
+      let newAdmin = userHelper.capitalizeNames(req.payload);
+      newAdmin.localNumber = phoneHelper.formatMoble(newAdmin.phoneNumber);
       let result = {};
-
-      userTable.updateAdmin(newUser, (err, data) => {
+      userTable.updateAdmin(newAdmin, (err, data) => {
         if(err || data.rowCount === 0) {
           result.error = 'We could not add this user as an admin, please try again';
         } else if (data.rowCount === 1) {
