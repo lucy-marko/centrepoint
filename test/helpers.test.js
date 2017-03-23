@@ -11,7 +11,7 @@ test('check that getUser function extracts a user id from activity details', fun
 });
 
 test('check that getFirstName function returns a correctly formatted first name', function (t) {
-  let name = userHelper.getFirstName({ givenNames: 'KERMIT THE FROG' })
+  let name = userHelper.getFirstName('KERMIT THE FROG')
   t.equal(name, 'Kermit');
   t.end();
 });

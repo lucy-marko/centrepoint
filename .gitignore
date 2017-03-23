@@ -1,5 +1,6 @@
 .DS_Store
 node_modules
+coverage
 config.env
 key_pem
 keys_tls
