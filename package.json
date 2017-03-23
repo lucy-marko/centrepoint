@@ -5,7 +5,7 @@
   "main": "src/start.js",
   "scripts": {
     "start": "node src/start.js",
-    "test": "tape 'test/**/*.js'",
+    "test": "istanbul cover tape 'test/**/*.js'",
     "watch": "nodemon src/start.js -e js,html,css",
     "build": "node src/database/build_database.js"
   },
@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "env2": "^2.1.1",
+    "istanbul": "^0.4.5",
     "nodemon": "^1.11.0",
     "tape": "^4.6.3"
   },
