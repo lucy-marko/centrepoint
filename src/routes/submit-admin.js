@@ -15,9 +15,10 @@ module.exports = {
         { method: authMiddleware, assign: 'user' }
     ],
     handler: (req, reply) => {
+      // again i don't think formatMobile should return a user
       let newUser = phoneHelper.formatMobile(caseHelper.allCaps(req.payload));
       let result = {};
-
+      
       userTable.updateAdmin(newUser, (err, data) => {
         if(err || data.rowCount === 0) {
           result.error = 'We could not add this user as an admin, please try again';

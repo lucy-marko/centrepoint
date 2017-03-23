@@ -8,6 +8,8 @@ module.exports = function (req, reply) {
       error : errorHelper.loginError
     });
   }
+  // no need to assign to user here
+  // yotiHelper doesn't return anything, instead it provides the user in the callback
   let user = yotiHelper(token, function(err, user) {
     if (err) {
       return reply.view('error', {

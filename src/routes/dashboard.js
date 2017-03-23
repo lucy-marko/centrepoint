@@ -25,7 +25,15 @@ module.exports = {
               error: errorHelper.databaseError
             });
           }
+          
+          // minor point: i think usually code that prepares data for being displayed goes closer to the templates
+          
+          // if a variable is called a Date, it should be a date! `dashboardDataDate` is an array of... stuff
+          // if fixDate took a date and returned a formatted date, this line could be moved inside the map
+          // then you'd just have `formattedDashboardData = dashboardData.map(function...)`
           let dashboardDataDate = formatDates.fixDate(dashboardData);
+          
+          // i'd probably call this one formattedDashboardData
           let formattedDashData = dashboardDataDate.map(function(request) {
             request.activeCap = requestHelper.formatStatus(request.active);
             if (request.admin_names) {
@@ -34,6 +42,8 @@ module.exports = {
             }
             return request;
           });
+          
+          
           userTable.retrieveAdmins(function (err, adminData) {
             if (err) {
               return reply.view('error', {

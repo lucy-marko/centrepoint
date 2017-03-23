@@ -1,5 +1,6 @@
 module.exports = {
     method: '*',
+  // why does this catch all routes that start with 'p' ?
     path: '/{p*}', // catch-all path
     handler: (req, reply) => {
       reply.view('error', {

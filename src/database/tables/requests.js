@@ -9,6 +9,14 @@ module.exports.insert = (request, user, cb) => {
     });
 };
 
+/**
+ * What kind of data structure does this return? Good to put that into a comment.
+ * 
+ * I don't think you could make this into one database query, as you do need to join two things:
+ * requests.assigned_user_id and requests.user_id both need to be joined to the users table.
+ * 
+ * Sometimes when SQL starts to get hairy it's reasonable to move the logic into code. But I think this is fine.
+ */
 module.exports.retrieve = (cb) => {
   let requestsUsersJoin = `(SELECT * FROM requests INNER JOIN users ON requests.user_id = users.user_id) AS join1`;
   let requestsAdminJoin = `(SELECT request_id, given_names AS admin_names, family_name AS admin_family FROM requests LEFT JOIN users ON requests.assigned_user_id = users.user_id) AS join2`;

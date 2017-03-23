@@ -1,3 +1,29 @@
+/**
+ * These tests have the right idea, but for all the protected routes you're just verifying
+ * that the user gets an 'Unauthorized' response.
+ *
+ * You'll need to pass an auth cookie into the `options`, and override the yotiClient somehow.
+ *
+ * One way to do this is to change yotiHelper to be:
+ *
+ *     module.exports.getActivityDetails = function (token, callback)
+ *
+ * If you then do the following before you require 'server.js':
+ *
+ *     const yotiHelper = require('../src/helpers/yotiHelper');
+ *     yotiHelper.getActivityDetails = function (token, callback) {
+ *          if (token) {
+ *              callback(null, sampleActivityData)
+ *          } else {
+ *              callback(error)
+ *          }
+ *     }
+ *
+ * This will override yotiHelper.getActivityDetails, so when it is required in 'server.js', the fake function
+ * will be loaded in.
+ *
+ */
+
 const test = require('tape');
 const fs = require('fs');
 const path = require('path');
