@@ -25,8 +25,10 @@ module.exports = {
               error: errorMessages.databaseError
             });
           }
-          let dashboardDataDate = formatDates.fixDate(dashboardData);
-          let formattedDashData = dashboardDataDate.map(function(request) {
+          console.log('1 ',dashboardData);
+          let formattedDashboardData = dashboardData.map(function (request) {
+            request.birth_date = request.birth_date.toString().slice(0,15);
+            request.time_stamp = request.time_stamp.toString().slice(0,21);
             request.activeCap = requestHelper.formatStatus(request.active);
             if (request.admin_names) {
               request.admin_names = userHelper.getFirstName(request.admin_names);
@@ -34,6 +36,8 @@ module.exports = {
             }
             return request;
           });
+          console.log('2 ',dashboardData);
+          console.log('3 ',formattedDashboardData);
           userTable.retrieveAdmins(function (err, adminData) {
             if (err) {
               return reply.view('error', {
@@ -48,7 +52,7 @@ module.exports = {
               }
             });
             return reply.view('dashboard', {
-              requests: formattedDashData,
+              requests: formattedDashboardData,
               admins: formattedAdminData
             });
           });
