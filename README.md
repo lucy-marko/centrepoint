@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/lucy-marko/centrepoint.svg?branch=master)](https://travis-ci.org/lucy-marko/centrepoint)
+[![codecov](https://codecov.io/gh/lucy-marko/centrepoint/branch/master/graph/badge.svg)](https://codecov.io/gh/lucy-marko/centrepoint)
+
 # Centrepoint Alumni help
 
 An app to allow former Centrepoint residents request their Centrepoint housing information, and to allow administrators to view and manage requests.
