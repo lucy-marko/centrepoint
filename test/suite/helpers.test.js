@@ -1,8 +1,8 @@
 const test = require('tape');
-const userHelper = require('../src/helpers/userHelper.js');
-const sampleActivityData = require('./sampleActivityData.js');
-const sampleUser = require('./sampleUser.js');
-const phoneHelper = require('../src/helpers/phoneHelper.js');
+const userHelper = require('../../src/helpers/userHelper.js');
+const sampleActivityData = require('../data/sampleActivityData.js');
+const sampleUser = require('../data/sampleUser.js');
+const phoneHelper = require('../../src/helpers/phoneHelper.js');
 
 test('check that getUser function extracts a user id from activity details', function (t) {
   let user = userHelper.getUser(sampleActivityData);

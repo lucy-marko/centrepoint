@@ -1,7 +1,7 @@
 const test = require('tape');
 const fs = require('fs');
 const path = require('path');
-const server = require('../src/server.js');
+const server = require('../../src/server.js');
 
 test('Check if server is running', t => {
   server.start(err => {
@@ -32,6 +32,17 @@ test('Check failing route & handling', function(t) {
   server.inject(options, (res) => {
     t.equal(res.statusCode, 404, 'status code is 404');
     // add a test to check html content
+    t.end();
+  });
+});
+
+test('Check login route', function(t) {
+  var options = {
+    method: 'GET',
+    url: '/login?token=goodtoken'
+  };
+  server.inject(options, (res) => {
+    t.equal(res.statusCode, 302, 'status code is 302');
     t.end();
   });
 });
