@@ -5,16 +5,15 @@ const sampleActivityData = require('../data/sampleActivityData');
  */
 module.exports = {
   getActivityDetails: function (token) {
-    const activityData = fakeYotiDatabase[token];
-    if (activityData) {
-      return Promise.resolve(activityData)
+    const activityDetails = activityDetailsByToken[token];
+    if (activityDetails) {
+      return Promise.resolve(activityDetails)
     } else {
       return Promise.reject()
     }
   }
 };
 
-// a map from tokens to activityData
-const fakeYotiDatabase = {
+const activityDetailsByToken = {
   goodtoken: sampleActivityData
 };
