@@ -26,3 +26,4 @@ const mockYotiClient = require('../helpers/mockYotiClient');
 yotiService.getClient = function () {
   return mockYotiClient;
 };
+
