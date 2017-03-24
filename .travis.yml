@@ -3,12 +3,12 @@ node_js:
 - "6.9.4"
 env:
 - CXX="g++-4.8"
-- DB_URL="psql://postgres@travis_ci_test"
+# - DB_URL="psql://postgres@travis_ci_test"
 before_install:
   - pip install --user codecov
-before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - node src/database/build_database.js
+#before_script:
+#  - psql -c 'create database travis_ci_test;' -U postgres
+#  - node src/database/build_database.js
 after_success:
   - codecov --file coverage/lcov.info --disable search
 services:
