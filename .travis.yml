@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - "6.9.4"
 env:
-- CXX="g++-4.8" DB_URL="psql://postgres@travis_ci_test"
+- CXX="g++-4.8" DB_URL="psql://postgres@localhost/travis_ci_test"
 before_install:
   - pip install --user codecov
 before_script:
