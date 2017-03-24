@@ -2,19 +2,16 @@ language: node_js
 node_js:
 - "6.9.4"
 env:
-- CXX="g++-4.8"
-### This is a local database that travis can connect to
-# - DB_URL="psql://postgres@travis_ci_test"
+- CXX="g++-4.8" DB_URL="psql://postgres@travis_ci_test"
 before_install:
   - pip install --user codecov
-### This was here to set up the database for the tests
-#before_script:
-#  - psql -c 'create database travis_ci_test;' -U postgres
-#  - node src/database/build_database.js
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - node src/database/build_database.js
 after_success:
   - codecov --file coverage/lcov.info --disable search
-#services:
-#  - postgresql
+services:
+  - postgresql
 addons:
   apt:
     sources:
