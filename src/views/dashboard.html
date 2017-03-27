@@ -14,11 +14,11 @@
            </div>
          </li>
          {{#each requests}}
-         <li class="request text-{{this.active}}">
-           <div class="collapsible-header header-{{this.active}}">
+         <li class="request text-{{this.status}}">
+           <div class="collapsible-header header-{{this.status}}">
              <div class="row top">
-               <span class="header__status col s3"><div class="marker-{{this.active}}" id="status-icon"></div>{{this.activeCap}}</span>
-               <span class="header__assignee col s3">{{this.admin_names}} {{this.admin_family}}</span>
+               <span class="header__status col s3"><div class="marker-{{this.status}}" id="status-icon"></div>{{this.statusCap}}</span>
+               <span class="header__assignee col s3">{{this.admin_given_names}} {{this.admin_family_name}}</span>
                <span class="header__name col s3">{{this.given_names}} {{this.family_name}}</span>
                <span class="header__date col s3">{{this.time_stamp_formatted}}</span>
              </div>
@@ -69,9 +69,9 @@
 
             <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}b'>Change status</a>
             <ul id='dropdown{{this.request_id}}b' class='dropdown-content'>
-              <li><a href="/status?id={{this.request_id}}&active=open">Open</a></li>
-              <li><a href="/status?id={{this.request_id}}&active=progress">In progress</a></li>
-              <li><a href="/status?id={{this.request_id}}&active=closed">Closed</a></li>
+              <li><a href="/status?id={{this.request_id}}&status=open">Open</a></li>
+              <li><a href="/status?id={{this.request_id}}&status=progress">In progress</a></li>
+              <li><a href="/status?id={{this.request_id}}&status=closed">Closed</a></li>
             </ul>
 
             <a class='dropdown-button btn' href='#' data-activates='dropdown{{this.request_id}}'>Assign request</a>

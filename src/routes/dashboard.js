@@ -29,10 +29,10 @@ module.exports = {
             let newRequest = Object.assign({}, request);
             newRequest.birth_date = newRequest.birth_date.toString().slice(0,15);
             newRequest.time_stamp = newRequest.time_stamp.toString().slice(0,21);
-            newRequest.activeCap = requestHelper.formatStatus(newRequest.active);
-            if (newRequest.admin_names) {
-              newRequest.admin_names = userHelper.getFirstName(newRequest.admin_names);
-              newRequest.admin_family = userHelper.getLastName(newRequest.admin_family);
+            newRequest.statusCap = requestHelper.formatStatus(newRequest.status);
+            if (newRequest.admin_given_names) {
+              newRequest.admin_given_names = userHelper.getFirstName(newRequest.admin_given_names);
+              newRequest.admin_family_name = userHelper.getLastName(newRequest.admin_family_name);
             }
             return newRequest;
           });

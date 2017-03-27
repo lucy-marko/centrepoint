@@ -15,7 +15,7 @@ module.exports = {
     handler: (req, reply) => {
       let request = {
         id: req.query.id,
-        active: req.query.active
+        status: req.query.status
       };
       requestTable.updateStatus(request, function (err, data) {
         if (err) {

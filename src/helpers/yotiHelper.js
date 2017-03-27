@@ -18,7 +18,7 @@ module.exports = function (token, callback) {
   .getActivityDetails(token)
   .then((activityDetails) => {
     let user = userHelper.getUser(activityDetails);
-    userTable.queryUserId(user, function (err, userData) {
+    userTable.getUserId(user, function (err, userData) {
       if (err) {
         callback(errorMessages.databaseError);
       }
