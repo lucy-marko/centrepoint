@@ -20,12 +20,12 @@
                <span class="header__status col s3"><div class="marker-{{this.status}}" id="status-icon"></div>{{this.statusCap}}</span>
                <span class="header__assignee col s3">{{this.admin_given_names}} {{this.admin_family_name}}</span>
                <span class="header__name col s3">{{this.given_names}} {{this.family_name}}</span>
-               <span class="header__date col s3">{{this.time_stamp_formatted}}</span>
+               <span class="header__date col s3">{{this.time_stamp}}</span>
              </div>
            </div>
            <div class="collapsible-body">
              <div class="row">
-               <div class="col s2 m2 l2">Birthdate:</div><div class="col s4 m4 l4">{{this.birth_date_formatted}}</div>
+               <div class="col s2 m2 l2">Birthdate:</div><div class="col s4 m4 l4">{{this.birth_date}}</div>
              </div>
 
              {{#if this.street}}
