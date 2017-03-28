@@ -3,5 +3,19 @@ node_js:
 - "6.9.4"
 before_install:
   - pip install --user codecov
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - node src/database/build_database.js
 after_success:
   - codecov --file coverage/lcov.info --disable search
+env:
+  - CXX=g++-4.8
+    DB_URL="psql://postgres@localhost/travis_ci_test"
+services:
+- postgresql
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
