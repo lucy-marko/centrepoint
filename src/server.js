@@ -3,6 +3,7 @@
 const hapi = require('hapi');
 const fs = require('fs');
 const path = require('path');
+const HapiAuthJWT2 = require('hapi-auth-jwt2');
 
 const inert = require('inert');
 const vision = require('vision');
@@ -16,8 +17,8 @@ const server = new hapi.Server();
 server.connection ({
   port: process.env.PORT || 9443,
   tls: {
-    key: fs.readFileSync(path.join(__dirname, '../keys_tls/key.pem')),
-    cert: fs.readFileSync(path.join(__dirname, '../keys_tls/cert.pem'))
+    key: fs.readFileSync(path.join(__dirname, '../keys/key.pem')),
+    cert: fs.readFileSync(path.join(__dirname, '../keys/cert.pem'))
   }
 });
 
