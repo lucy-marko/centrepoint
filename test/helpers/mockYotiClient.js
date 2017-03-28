@@ -1,5 +1,5 @@
-const sampleActivityDetails = require('./sampleActivityDetails.js')
-const sampleUser = require('./sampleUser.js');
+const sampleActivityDetails = require('../data/sampleActivityDetails.js')
+const sampleUser = require('../data/sampleUser.js');
 
 module.exports.getActivityDetails = function (token) {
   const activityDetails = mockYotiDatabase[token];
@@ -12,5 +12,5 @@ module.exports.getActivityDetails = function (token) {
 };
 
 const mockYotiDatabase = {
-  goodtoken: sampleActivityData
+  goodtoken: sampleActivityDetails
 }
