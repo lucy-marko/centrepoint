@@ -4,7 +4,7 @@ const userHelper = require('../helpers/userHelper');
 const errorMessages = require('../constants/errorMessages.js');
 
 module.exports = function (token, callback) {
-  yotiClient
+  yotiClient.getClient()
   .getActivityDetails(token)
   .then((activityDetails) => {
     let user = userHelper.getUser(activityDetails);
