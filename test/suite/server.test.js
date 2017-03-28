@@ -49,6 +49,17 @@ test('Check dashboard route', function(t) {
   });
 });
 
+test('Check login route', function(t) {
+  var options = {
+    method: 'GET',
+    url: '/login?token=goodtoken'
+  };
+  server.inject(options, (res) => {
+    t.equal(res.statusCode, 302, 'status code is 302');
+    t.end();
+  });
+});
+
 test('Check info route', function(t) {
   var options = {
     method: 'GET',

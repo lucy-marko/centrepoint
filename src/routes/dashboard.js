@@ -3,9 +3,7 @@ const requestTable = require('../database/tables/requests.js');
 const userTable = require('../database/tables/users.js');
 const userHelper = require('../helpers/userHelper.js');
 const requestHelper = require('../helpers/requestHelper.js');
-const formatDates = require('../helpers/dateHelper.js');
 const errorMessages = require('../constants/errorMessages.js');
-const dateHelper = require('../helpers/dateHelper.js');
 
 module.exports = {
   method: 'GET',

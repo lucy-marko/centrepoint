@@ -4,10 +4,10 @@ const sampleUser = require('../data/sampleUser.js');
 module.exports.getActivityDetails = function (token) {
   const activityDetails = mockYotiDatabase[token];
   if (activityDetails) {
-    Promise.resolve(activityDetails);
+    return Promise.resolve(activityDetails);
   }
   else {
-    Promise.reject(sampleUser);
+    return Promise.reject();
   }
 };
 
