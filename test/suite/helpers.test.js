@@ -25,8 +25,8 @@ test('check that getLastName function returns a correctly formatted first name',
 });
 
 test('check that capitalizeNames function capitalizes names in user object', function (t) {
-  let admin = userHelper.capitalizeNames(sampleNewAdmin.input);
-  t.deepEqual(admin, sampleNewAdmin.output);
+  let admin = userHelper.capitalizeNames(sampleNewAdmin.formInput);
+  t.deepEqual(admin, sampleNewAdmin.formOutput);
   t.end();
 });
 

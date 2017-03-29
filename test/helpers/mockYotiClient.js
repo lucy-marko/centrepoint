@@ -12,5 +12,5 @@ module.exports.getActivityDetails = function (token) {
 };
 
 const mockYotiDatabase = {
-  goodtoken: sampleActivityDetails
+  goodtoken: sampleActivityDetails 
 }

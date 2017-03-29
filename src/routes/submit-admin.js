@@ -14,7 +14,7 @@ module.exports = {
         { method: authMiddleware, assign: 'user' }
     ],
     handler: (req, reply) => {
-      let newAdmin = userHelper.capitalizeNames(req.payload);s
+      let newAdmin = userHelper.capitalizeNames(req.payload);
       newAdmin.localNumber = phoneHelper.formatMobile(newAdmin.phoneNumber);
       let result = {};
       userTable.updateAdmin(newAdmin, (err, data) => {
