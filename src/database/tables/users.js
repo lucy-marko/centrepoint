@@ -7,7 +7,7 @@ module.exports.insert = (user, cb) => {
     });
 };
 
-module.exports.queryUserId = (user, cb) => {
+module.exports.getUserId = (user, cb) => {
   dbConn.query('SELECT * FROM users WHERE user_id=($1);', [user.id], (error, data) => {
     error ? cb(error) : cb(null, data.rows[0]);
   });

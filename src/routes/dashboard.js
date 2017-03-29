@@ -4,7 +4,7 @@ const userTable = require('../database/tables/users.js');
 const userHelper = require('../helpers/userHelper.js');
 const requestHelper = require('../helpers/requestHelper.js');
 const formatDates = require('../helpers/dateHelper.js');
-const errorHelper = require('../helpers/errorHelper.js');
+const errorMessages = require('../constants/errorMessages.js');
 const dateHelper = require('../helpers/dateHelper.js');
 
 module.exports = {
@@ -22,22 +22,24 @@ module.exports = {
         requestTable.retrieve(function (err, dashboardData) {
           if (err) {
             return reply.view('error', {
-              error: errorHelper.databaseError
+              error: errorMessages.databaseError
             });
           }
-          let dashboardDataDate = formatDates.fixDate(dashboardData);
-          let formattedDashData = dashboardDataDate.map(function(request) {
-            request.activeCap = requestHelper.formatStatus(request.active);
-            if (request.admin_names) {
-              request.admin_names = userHelper.getFirstName(request.admin_names);
-              request.admin_family = userHelper.getLastName(request.admin_family);
+          let formattedDashboardData = dashboardData.map(function (request) {
+            let newRequest = Object.assign({}, request);
+            newRequest.birth_date = newRequest.birth_date.toString().slice(0,15);
+            newRequest.time_stamp = newRequest.time_stamp.toString().slice(0,21);
+            newRequest.statusCap = requestHelper.formatStatus(newRequest.status);
+            if (newRequest.admin_given_names) {
+              newRequest.admin_given_names = userHelper.getFirstName(newRequest.admin_given_names);
+              newRequest.admin_family_name = userHelper.getLastName(newRequest.admin_family_name);
             }
-            return request;
+            return newRequest;
           });
           userTable.retrieveAdmins(function (err, adminData) {
             if (err) {
               return reply.view('error', {
-                error: errorHelper.databaseError
+                error: errorMessages.databaseError
               });
             }
             let formattedAdminData = adminData.map(function(admin) {
@@ -48,14 +50,14 @@ module.exports = {
               }
             });
             return reply.view('dashboard', {
-              requests: formattedDashData,
+              requests: formattedDashboardData,
               admins: formattedAdminData
             });
           });
         });
       } else {
         return reply.view('error', {
-          error : errorHelper.authenticationError
+          error : errorMessages.authenticationError
         });
       }
     }

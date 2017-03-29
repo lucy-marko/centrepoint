@@ -1,4 +1,4 @@
-const errorHelper = require('../helpers/errorHelper.js');
+const errorMessages = require('../constants/errorMessages.js');
 const yotiHelper = require('../helpers/yotiHelper.js');
 const userTable = require('../database/tables/users');
 const userHelper = require('../helpers/userHelper');
@@ -11,11 +11,11 @@ module.exports = {
     let token = req.query.token;
     if(!token) {
       return reply.view('error', {
-        error : errorHelper.loginError
+        error : errorMessages.loginError
       });
     }
     req.cookieAuth.set({ auth: token });
-    let user = yotiHelper(token, function(err, user) {
+    yotiHelper(token, function(err, user) {
       if (err) {
         return reply.view('error', {
           error : err
@@ -27,11 +27,12 @@ module.exports = {
         }
         return reply.redirect('/info');
       }
-      let newUser = phoneHelper.formatMobile(user);
+      let newUser = Object.assign({}, user);
+      newUser.localNumber = phoneHelper.formatMoble(user.phoneNumber);
       userTable.insert(newUser, function (err, data) {
         if (err) {
           return reply.view('error', {
-            error : errorHelper.databaseError
+            error : errorMessages.databaseError
           });
         }
         return reply.redirect('/info');

@@ -1,6 +1,6 @@
 const authMiddleware = require('../helpers/authMiddleware.js')
 const requestTable = require('../database/tables/requests.js')
-const errorHelper = require('../helpers/errorHelper.js');
+const errorMessages = require('../constants/errorMessages.js');
 
 module.exports = {
   method: 'GET',
@@ -15,12 +15,12 @@ module.exports = {
     handler: (req, reply) => {
       let request = {
         id: req.query.id,
-        active: req.query.active
+        status: req.query.status
       };
       requestTable.updateStatus(request, function (err, data) {
         if (err) {
           return reply.view('error', {
-            error: errorHelper.databaseError
+            error: errorMessages.databaseError
           });
         }
         reply.redirect('/dashboard');

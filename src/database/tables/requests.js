@@ -10,17 +10,22 @@ module.exports.insert = (request, user, cb) => {
 };
 
 module.exports.retrieve = (cb) => {
+  // Match requests with details of ex-residents who made them
   let requestsUsersJoin = `(SELECT * FROM requests INNER JOIN users ON requests.user_id = users.user_id) AS join1`;
-  let requestsAdminJoin = `(SELECT request_id, given_names AS admin_names, family_name AS admin_family FROM requests LEFT JOIN users ON requests.assigned_user_id = users.user_id) AS join2`;
-  let customOrder = `CASE WHEN active='open' THEN 1 WHEN active='progress' THEN 2 WHEN active='closed' THEN 3 END`;
-  dbConn.query(`SELECT * FROM ${requestsUsersJoin} INNER JOIN ${requestsAdminJoin} ON join1.request_id = join2.request_id ORDER BY ${customOrder}, time_stamp DESC;`,
+  // Match requests with details of admins who will process them
+  let requestsAdminJoin = `(SELECT request_id, given_names AS admin_given_names, family_name AS admin_family_name FROM requests LEFT JOIN users ON requests.assigned_user_id = users.user_id) AS join2`;
+  // Define ordering of requests as open > in progress > closed
+  let customOrder = `CASE WHEN status='open' THEN 1 WHEN status='progress' THEN 2 WHEN status='closed' THEN 3 END`;
+  // Combine ex-resident and admin details for each request
+  let requestUsersAdminJoin = `SELECT * FROM ${requestsUsersJoin} INNER JOIN ${requestsAdminJoin} ON join1.request_id = join2.request_id ORDER BY ${customOrder}, time_stamp DESC;`;
+  dbConn.query(requestUsersAdminJoin,
     (error, data) => {
       error ? cb(error) : cb(null, data.rows);
     });
 };
 
 module.exports.updateStatus = (request, cb) => {
-  dbConn.query('UPDATE requests SET active = ($1) WHERE request_id = ($2);', [request.active, request.id],
+  dbConn.query('UPDATE requests SET status = ($1) WHERE request_id = ($2);', [request.status, request.id],
     (error, data) => {
       error ? cb(error) : cb(null);
     });
