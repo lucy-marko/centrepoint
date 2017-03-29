@@ -14,8 +14,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 const server = new hapi.Server();
 
 let connOptions = {
-  port: process.env.PORT || 9443,
-  host: process.env.HOST || 'localhost',
+  port: process.env.PORT || 9443
   router: {
     stripTrailingSlash: true
   }
