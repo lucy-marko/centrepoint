@@ -9,11 +9,9 @@ const vision = require('vision');
 const handlebars = require('handlebars');
 const CookieAuth = require('hapi-auth-cookie');
 const routes = require('./routes/index.js');
-const isProduction = process.env.NODE_ENV === 'PRODUCTION';
+const isProduction = process.env.NODE_ENV === 'production';
 
 const server = new hapi.Server();
-
-console.log(process.env.NODE_ENV);
 
 let connOptions = {
   port: process.env.PORT || 9443,
