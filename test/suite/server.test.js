@@ -164,9 +164,15 @@ test('Check submit route', function(t) {
       auth: 'goodtoken'
     }
   };
-  server.inject(options, (res) => {
-    t.equal(res.statusCode, 200, 'status code is 200');
-    t.end();
+  userTable.insert(sampleUser, function (err, data) {
+    if (err) console.log(err);
+    server.inject(options, (res) => {
+      t.equal(res.statusCode, 200, 'status code is 200');
+      testQueries.deleteAll(function(err, data) {
+        if (err) console.log(err);
+        t.end();
+      });
+    });
   });
 });
 
@@ -193,7 +199,7 @@ test('Check dashboard route', function(t) {
   });
 });
 
-test('Check status route (unsuccessful)', function(t) {
+test('Check status route (successful)', function(t) {
   var options = {
     method: 'GET',
     url: '/status?id=1&status=open',
