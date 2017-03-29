@@ -15,16 +15,16 @@ const server = new hapi.Server();
 
 let connOptions = {
   port: process.env.PORT || 9443,
-  host: process.env.HOST || 'localhost'
+  host: process.env.HOST || 'localhost',
+  router: {
+    stripTrailingSlash: true
+  }
 }
 
 if (! isProduction) {
   connOptions.tls = {
     key: fs.readFileSync(path.join(__dirname, '../keys_tls/key.pem')),
     cert: fs.readFileSync(path.join(__dirname, '../keys_tls/cert.pem'))
-  },
-  router: {
-    stripTrailingSlash: true
   }
 };
 
