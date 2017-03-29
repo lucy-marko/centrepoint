@@ -3,6 +3,7 @@ module.exports = [
   './static.js',
   './login.js',
   './info.js',
+  './salesforce',
   './submit.js',
   './new-admin.js',
   './submit-admin',

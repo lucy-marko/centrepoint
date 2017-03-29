@@ -23,9 +23,11 @@
     "handlebars": "^4.0.6",
     "hapi": "^15.2.0",
     "hapi-auth-cookie": "^6.1.1",
+    "hapi-auth-jwt2": "^7.2.4",
     "inert": "^4.0.2",
+    "nforce": "^1.7.0",
     "pg": "^6.1.2",
-    "request": "^2.79.0",
+    "request": "^2.81.0",
     "vision": "^4.1.0",
     "yoti-node-sdk": "^1.0.2"
   },
