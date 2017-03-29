@@ -267,7 +267,7 @@ test('Check new-admin route', function(t) {
   });
 });
 
-test('Check submit-admin route', function(t) {
+test('Check submit-admin route (admin)', function(t) {
   var options = {
     method: 'POST',
     url: '/submit-admin',
@@ -279,10 +279,14 @@ test('Check submit-admin route', function(t) {
   userTable.insert(sampleNewAdmin.userDetails, function (err, data) {
     if (err) console.log(err);
     server.inject(options, (res) => {
-      t.equal(res.statusCode, 200, 'status code is 200');
-      testQueries.deleteAll(function(err, data) {
+      userTable.retrieveAdmins(function (err, adminData) {
         if (err) console.log(err);
-        t.end();
+        t.equal(res.statusCode, 200, 'status code is 200');
+        t.ok(adminData.length, 'user status set to admin');
+        testQueries.deleteAll(function(err, data) {
+          if (err) console.log(err);
+          t.end();
+        });
       });
     });
   });

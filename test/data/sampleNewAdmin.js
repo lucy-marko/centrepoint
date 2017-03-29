@@ -3,7 +3,8 @@ module.exports.userDetails = {
   givenNames: 'CAITLIN',
   familyName: 'JONES',
   dateOfBirth: '1996-11-29',
-  phoneNumber: '07081725208'
+  phoneNumber: '+447081725208',
+  localNumber: '07081725208'
 };
 
 module.exports.formInput = {
