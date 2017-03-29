@@ -122,6 +122,36 @@ test('Check dashboard route', function(t) {
   });
 });
 
+test('Check status route (unsuccessful)', function(t) {
+  var options = {
+    method: 'GET',
+    url: '/status?id=1&status=open',
+    credentials: {
+      auth: 'goodtoken'
+    }
+  };
+  server.inject(options, (res) => {
+    t.equal(res.statusCode, 302, 'status code is 302');
+    t.end();
+  });
+});
+
+test('Check status route (unsuccessful)', function(t) {
+  var options = {
+    method: 'GET',
+    url: '/status?id=hello&status=closed',
+    credentials: {
+      auth: 'goodtoken'
+    }
+  };
+  server.inject(options, (res) => {
+    const html = res.result.toString();
+    t.equal(res.statusCode, 200, 'status code is 200');
+    t.ok(html.indexOf("There was a problem retrieving data, please try again.") > -1);
+    t.end();
+  });
+});
+
 test('Check assign route (successful)', function(t) {
   var options = {
     method: 'GET',
@@ -136,7 +166,7 @@ test('Check assign route (successful)', function(t) {
   });
 });
 
-test('Check assign route (successful)', function(t) {
+test('Check assign route (unsuccessful)', function(t) {
   var options = {
     method: 'GET',
     url: '/assign?id=nonexistentadmin',
@@ -148,6 +178,35 @@ test('Check assign route (successful)', function(t) {
     const html = res.result.toString();
     t.equal(res.statusCode, 200, 'status code is 200');
     t.ok(html.indexOf("There was a problem retrieving data, please try again.") > -1);
+    t.end();
+  });
+});
+
+test('Check new-admin route', function(t) {
+  var options = {
+    method: 'GET',
+    url: '/new-admin',
+    credentials: {
+      auth: 'goodtoken'
+    }
+  };
+  server.inject(options, (res) => {
+    t.equal(res.statusCode, 200, 'status code is 200');
+    t.end();
+  });
+});
+
+test('Check submit route', function(t) {
+  var options = {
+    method: 'POST',
+    url: '/submit-admin',
+    payload: sampleNewAdmin,
+    credentials: {
+      auth: 'goodtoken'
+    }
+  };
+  server.inject(options, (res) => {
+    t.equal(res.statusCode, 200, 'status code is 200');
     t.end();
   });
 });
