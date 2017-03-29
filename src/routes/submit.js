@@ -14,6 +14,7 @@ module.exports = {
     ],
     handler: (req, reply) => {
       requestTable.insert(req.payload, req.pre.user, (err) => {
+        console.log(req.payload);
         if(err) {
           return reply.view('error', {
             error : errorMessages.databaseError
