@@ -13,13 +13,14 @@ module.exports = {
         { method: authMiddleware, assign: 'user' }
     ],
     handler: (req, reply) => {
+      let emailProvided = req.payload.email ? true : false;
       requestTable.insert(req.payload, req.pre.user, (err) => {
         if(err) {
           return reply.view('error', {
             error : errorMessages.databaseError
           });
         }
-        reply.view('thankyou');
+        reply.view('thankyou', { emailProvided });
       });
     }
   }
