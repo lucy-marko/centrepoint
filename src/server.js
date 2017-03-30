@@ -9,20 +9,26 @@ const vision = require('vision');
 const handlebars = require('handlebars');
 const CookieAuth = require('hapi-auth-cookie');
 const routes = require('./routes/index.js');
-const deployStatus = process.env.NODE_ENV === 'PRODUCTION';
+const isProduction = process.env.NODE_ENV === 'PRODUCTION';
 
 const server = new hapi.Server();
 
-server.connection ({
+let connOptions = {
   port: process.env.PORT || 9443,
-  tls: {
+  host: process.env.HOST || 'localhost'
+}
+
+if (! isProduction) {
+  connOptions.tls = {
     key: fs.readFileSync(path.join(__dirname, '../keys_tls/key.pem')),
     cert: fs.readFileSync(path.join(__dirname, '../keys_tls/cert.pem'))
   },
   router: {
     stripTrailingSlash: true
   }
-});
+};
+
+server.connection(connOptions);
 
 server.register([inert, vision, CookieAuth], (err) => {
   if (err) throw err;
@@ -42,7 +48,7 @@ server.register([inert, vision, CookieAuth], (err) => {
 const options = {
     password: 'D8M8#7PqdkRbb}/=NhvG#(B&/tA6v:unC2S',
     cookie: 'yoti-cookie',
-    isSecure: deployStatus,
+    isSecure: isProduction,
     ttl: 24 * 60 * 60 * 1000
 };
 

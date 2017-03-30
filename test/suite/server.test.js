@@ -1,7 +1,7 @@
 const test = require('tape');
 const fs = require('fs');
 const path = require('path');
-const server = require('../src/server.js');
+const server = require('../../src/server.js');
 
 test('Check if server is running', t => {
   server.start(err => {

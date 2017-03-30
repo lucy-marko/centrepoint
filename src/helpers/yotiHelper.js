@@ -1,20 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-
-const env = require('env2');
-env('./config.env');
-
-const YotiClient = require('yoti-node-sdk');
-const CLIENT_SDK_ID = process.env.SDK;
-const PEM = fs.readFileSync(path.join(__dirname, '../../key_pem/help-access-security.pem'));
-const yotiClient = new YotiClient(CLIENT_SDK_ID, PEM);
-
+const yotiClient = require('../services/yotiService.js');
 const userTable = require('../database/tables/users');
 const userHelper = require('../helpers/userHelper');
 const errorMessages = require('../constants/errorMessages.js');
 
 module.exports = function (token, callback) {
-  yotiClient
+  yotiClient.getClient()
   .getActivityDetails(token)
   .then((activityDetails) => {
     let user = userHelper.getUser(activityDetails);

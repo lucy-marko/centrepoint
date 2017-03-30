@@ -4,4 +4,3 @@ coverage
 config.env
 key_pem
 keys_tls
-/src/database/build_database.sql
