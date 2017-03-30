@@ -20,8 +20,6 @@ let connOptions = {
   }
 }
 
-console.log(process.env.NODE_ENV);
-
 if (isDevelopment) {
   connOptions.host = 'localhost';
   connOptions.tls = {
