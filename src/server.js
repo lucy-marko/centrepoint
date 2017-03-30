@@ -9,6 +9,7 @@ const vision = require('vision');
 const handlebars = require('handlebars');
 const CookieAuth = require('hapi-auth-cookie');
 const routes = require('./routes/index.js');
+
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 const server = new hapi.Server();

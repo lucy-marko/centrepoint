@@ -55,3 +55,4 @@ test('check that formatMobile function returns a correct mobile number if it sta
   t.equal(phoneHelper.formatMobile('447890 444 333'), '07890444333');
   t.end();
 });
+

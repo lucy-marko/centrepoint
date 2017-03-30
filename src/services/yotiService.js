@@ -13,12 +13,10 @@ module.exports.getClient = function() {
     const CLIENT_SDK_ID = process.env.SDK;
     let PEM;
     if (isDevelopment) {
-      console.log('1');
       PEM = fs.readFileSync(path.join(__dirname, '../../key_pem/help-access-security.pem'));
     }
     else {
       PEM = process.env.PEM;
-      console.log('2');
     }
     yotiClient = new YotiSDK(CLIENT_SDK_ID, PEM);
   };
