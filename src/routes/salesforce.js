@@ -30,7 +30,7 @@ module.exports = {
         if(!err) {
           console.log('callback was called');
           console.log('callback response object: ', resp);
-          org.query({ query: 'SELECT Id, Name FROM Account' }, function(err, res) {
+          org.query({ query: `SELECT Contact.FirstName, Contact.LastName FROM Contact WHERE Contact.FirstName='Andy'` }, function(err, res) {
             if(err) return console.error(err);
             else return console.log(res.records);
           });
@@ -43,3 +43,4 @@ module.exports = {
 };
 
 // SELECT Name FROM Account LIMIT 1
+// SELECT Name, Phone FROM Account WHERE (Name='SFDC Computing' AND NumberOfEmployees>25)
