@@ -11,7 +11,11 @@
               <i class="large material-icons" id="clock">schedule</i>
               <ul id="expect-time">
                 <li>You can expect to hear from us</li>
+                {{#if emailProvided}}
                 <li>in 24 hours.</li>
+                {{^}}
+                <li>in 5 working days.</li>
+                {{/if}}
               </ul>
             </div>
         </div>

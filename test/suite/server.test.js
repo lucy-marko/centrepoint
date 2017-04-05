@@ -6,6 +6,7 @@ const dbConn = require('../../src/database/connection.js');
 
 const testQueries = require('../helpers/queries.js');
 const sampleRequest = require('../data/sampleRequest.js');
+const sampleRequestPost = require('../data/sampleRequestPost.js');
 const sampleNewAdmin = require('../data/sampleNewAdmin.js');
 const sampleUser = require('../data/sampleUser.js');
 const userTable = require('../../src/database/tables/users');
@@ -155,7 +156,7 @@ test('Check logout route', function(t) {
   });
 });
 
-test('Check submit route', function(t) {
+test('Check submit route (request with e-mail)', function(t) {
   var options = {
     method: 'POST',
     url: '/submit',
@@ -167,7 +168,32 @@ test('Check submit route', function(t) {
   userTable.insert(sampleUser, function (err, data) {
     if (err) console.log(err);
     server.inject(options, (res) => {
+      const html = res.result.toString();
       t.equal(res.statusCode, 200, 'status code is 200');
+      t.ok(html.indexOf("in 24 hours") > -1);
+      testQueries.deleteAll(function(err, data) {
+        if (err) console.log(err);
+        t.end();
+      });
+    });
+  });
+});
+
+test('Check submit route (request with postal address)', function(t) {
+  var options = {
+    method: 'POST',
+    url: '/submit',
+    payload: sampleRequestPost,
+    credentials: {
+      auth: 'goodtoken'
+    }
+  };
+  userTable.insert(sampleUser, function (err, data) {
+    if (err) console.log(err);
+    server.inject(options, (res) => {
+      const html = res.result.toString();
+      t.equal(res.statusCode, 200, 'status code is 200');
+      t.ok(html.indexOf("in 5 working days") > -1);
       testQueries.deleteAll(function(err, data) {
         if (err) console.log(err);
         t.end();
