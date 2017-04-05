@@ -14,6 +14,7 @@ const options = {
   port: params.port,
   database: params.pathname.split('/')[1],
   max: process.env.DB_MAX_CONNECTIONS || 2,
+  idleTimeoutMillis: 1000
 };
 
 if (username) options.user = username;

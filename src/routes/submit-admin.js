@@ -15,7 +15,6 @@ module.exports = {
     ],
     handler: (req, reply) => {
       let newAdmin = userHelper.capitalizeNames(req.payload);
-      console.log(newAdmin);
       newAdmin.localNumber = phoneHelper.formatMobile(newAdmin.phoneNumber);
       let result = {};
       userTable.updateAdmin(newAdmin, (err, data) => {

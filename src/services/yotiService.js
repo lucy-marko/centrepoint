@@ -3,7 +3,7 @@ const path = require('path');
 const env = require('env2');
 env('./config.env');
 
-const isProduction = process.env.NODE_ENV === 'PRODUCTION';
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 const YotiSDK = require('yoti-node-sdk');
 let yotiClient;
@@ -11,10 +11,12 @@ let yotiClient;
 module.exports.getClient = function() {
   if (! yotiClient) {
     const CLIENT_SDK_ID = process.env.SDK;
-    if (isProduction) {
-      const PEM = process.env.PEM;
-    } else {
-      const PEM = fs.readFileSync(path.join(__dirname, '../../key_pem/help-access-security.pem'));
+    let PEM;
+    if (isDevelopment) {
+      PEM = fs.readFileSync(path.join(__dirname, '../../key_pem/help-access-security.pem'));
+    }
+    else {
+      PEM = process.env.PEM;
     }
     yotiClient = new YotiSDK(CLIENT_SDK_ID, PEM);
   };

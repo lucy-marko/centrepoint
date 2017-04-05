@@ -9,7 +9,7 @@ before_script:
 after_success:
   - codecov --file coverage/lcov.info --disable search
 env:
-  - CXX=g++-4.8 DB_URL="psql://postgres@localhost/travis_ci_test"
+  - "CXX=\"g++-4.8\" DB_URL=\"psql://postgres@localhost/travis_ci_test\""
 services:
 - postgresql
 addons:
